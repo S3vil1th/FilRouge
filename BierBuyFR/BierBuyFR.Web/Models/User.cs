@@ -16,12 +16,12 @@ namespace BierBuyFR.Web.Models
         public int Role { get; set; }
         public DateTime DateCreation { get; set; }
         public int NumRue { get; set; }
-        public string rue { get; set; }
+        public string Rue { get; set; }
         public int TelPort { get; set; }
         public int TelFix { get; set; }
         public int Cp { get; set; }
         public string Ville { get; set; }
-        public string autre { get; set; }
+        public string Autre { get; set; }
 
     }
 }
