@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BierBuyFR.Entitie", "BierBu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BierBuyFR.Database", "BierBuyFR.Database\BierBuyFR.Database.csproj", "{F19AA5A1-C256-4267-9997-4B404EDC0089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BierBuyFR.Services", "BierBuyFR.Services\BierBuyFR.Services.csproj", "{A2883E32-336F-4C0E-8A13-2EDDB4CAA16A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F19AA5A1-C256-4267-9997-4B404EDC0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19AA5A1-C256-4267-9997-4B404EDC0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19AA5A1-C256-4267-9997-4B404EDC0089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2883E32-336F-4C0E-8A13-2EDDB4CAA16A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2883E32-336F-4C0E-8A13-2EDDB4CAA16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2883E32-336F-4C0E-8A13-2EDDB4CAA16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2883E32-336F-4C0E-8A13-2EDDB4CAA16A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

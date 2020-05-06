@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BierBuyFR.Database
 {
-    public class BBFRContext : DbContext 
+    public class BBFRContext : DbContext, IDisposable
     {
         public BBFRContext(): base("BierBuyFRConnection") 
         {
