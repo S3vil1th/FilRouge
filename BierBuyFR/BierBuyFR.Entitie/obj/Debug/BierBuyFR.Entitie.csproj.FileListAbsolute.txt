@@ -1,0 +1,6 @@
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\bin\Debug\BierBuyFR.Entitie.dll
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\bin\Debug\BierBuyFR.Entitie.pdb
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.csprojAssemblyReference.cache
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.csproj.CoreCompileInputs.cache
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.dll
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.pdb
