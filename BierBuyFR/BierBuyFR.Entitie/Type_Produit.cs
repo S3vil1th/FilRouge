@@ -13,7 +13,7 @@ namespace BierBuyFR.Entitie
         public int Type_ProduitID { get; set; }
         //Propriétés de la classe Type_Produit
         public string Type { get; set; }
-        public string Commentaire { get; set; }
+        public string Description { get; set; }
 
         //Foreign Key vers Produit
         public List<Produit> Produits { get; set; }
