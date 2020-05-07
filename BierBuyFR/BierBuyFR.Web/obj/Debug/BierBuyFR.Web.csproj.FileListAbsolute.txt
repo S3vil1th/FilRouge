@@ -120,7 +120,6 @@ C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\fr\Microsoft.
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\fr\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\fr\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\fr\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.csprojAssemblyReference.cache
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.csproj.CoreCompileInputs.cache
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.csproj.CopyComplete
 C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.dll
