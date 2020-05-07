@@ -1,0 +1,12 @@
+﻿@model List<BierBuyFR.Entitie.Type_Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var type_produit in Model)
+{
+    <h1>@type_produit.Type</h1>
+}

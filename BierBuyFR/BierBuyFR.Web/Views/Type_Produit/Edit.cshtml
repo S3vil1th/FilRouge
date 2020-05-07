@@ -1,0 +1,23 @@
+﻿@model BierBuyFR.Entitie.Type_Produit
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Modifier types de produit</h2>
+
+<form method="post">
+    <input type="hidden" name="ID" value="@Model.Type_ProduitID" />
+
+    <label>Type</label>
+    <input name="Type" value="@Model.Type" />
+
+    <br />
+
+    <label>Description</label>
+    <input name="Description"  value="@Model.Description"/>
+
+    <br />
+
+    <button type="submit">Enregistrer</button>
+</form>
+

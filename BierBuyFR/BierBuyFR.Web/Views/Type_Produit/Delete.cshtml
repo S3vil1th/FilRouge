@@ -1,0 +1,17 @@
+﻿@model BierBuyFR.Entitie.Type_Produit
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Supprimer un type de produit</h2>
+
+
+
+    <h1> Etes vous sur de vouloir supprimer cette catégorie?</h1>
+
+    <form method="post">
+        <input type="hidden" name="ID" value="@Model.Type_ProduitID" />
+        <button type="submit">Oui</button>
+    </form>
+
+<a href="/Index">Annuler</a>
