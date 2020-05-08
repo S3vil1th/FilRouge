@@ -1,0 +1,61 @@
+﻿@using BierBuyFR.Entitie
+@model List<Produit>
+@{
+    ViewBag.Title = "ProduitTable";
+}
+
+<div>
+    <form method="post" >
+        <input id="searchTxt" name="Search" />
+        <button type="button" id="searchBtn"> Rechercher</button>
+    </form>
+    <button type="button" id="addBtn"> Nouveau </button>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>Nom du Produit</td>
+                <td>Categorie</td>
+                <td>Prix</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produit in Model)
+            {
+                <tr>
+                    <td>@produit.Nom</td>
+                    <td>-</td>
+                    <td>@produit.Prix</td>
+                    <td>
+                        <button>Modifier</button>
+                        <button>Supprimer</button>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>
+<script>
+    $("#searchBtn").click(function () {
+        var searchValue = $("#searchTxt").val();
+
+        $.ajax({
+            
+            url: '/Produit/ProduitTable',
+            data: {
+                search : searchValue
+            }
+        })
+            .done(function (response) {
+                $("#tableContainer").html(response);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+</script>

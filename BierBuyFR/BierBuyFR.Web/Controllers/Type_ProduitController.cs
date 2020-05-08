@@ -17,7 +17,7 @@ namespace BierBuyFR.Web.Controllers
         {
             var type_produits = type_produitService.GetType_Produits();
            
-            return View();
+            return View(type_produits);
         }
 
         [HttpGet]
@@ -29,7 +29,7 @@ namespace BierBuyFR.Web.Controllers
         public ActionResult Create(Type_Produit type_Produit)
         {
             type_produitService.SaveType_Produit(type_Produit);
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
