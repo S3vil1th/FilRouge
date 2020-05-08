@@ -6,7 +6,7 @@
 
 <h2>Ajouter un produit</h2>
 
-<form method="post">
+<form id="createProduit">
     <label>Nom</label>
     <input name="Nom" />
 
@@ -22,5 +22,23 @@
 
     <br />
 
-    <button type="submit">Ajouter</button>
+    <button id="saveBtn" type="button">Ajouter</button>
 </form>
+
+<script>
+    $("#saveBtn").click(function () {
+        $.ajax({
+            type:'POST',
+            url: '/Produit/Create',
+            data: $("#createProduit").serialize()
+
+        })
+            .done(function (response) {
+                $("#tableContainer").html(response);
+                $("#actionContainer").html("");
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+</script>

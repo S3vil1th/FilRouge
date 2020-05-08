@@ -39,7 +39,7 @@ namespace BierBuyFR.Web.Controllers
         public ActionResult Create(Produit produit)
         {
             produitsService.SaveProduit(produit);
-            return RedirectToAction("Index");
+            return RedirectToAction("ProduitTable");
         }
     }
 }
