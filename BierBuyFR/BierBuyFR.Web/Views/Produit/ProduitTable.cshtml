@@ -30,8 +30,8 @@
                     <td>-</td>
                     <td>@produit.Prix</td>
                     <td>
-                        <button>Modifier</button>
-                        <button>Supprimer</button>
+                        <button class="editBtn" data-id="@produit.ProduitID" >Modifier</button>
+                        <button class="deleteBtn" data-id="@produit.ProduitID">Supprimer</button>
                     </td>
                 </tr>
 
@@ -70,5 +70,45 @@
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("ECHEC");
             });
+    });
+
+    $(".editBtn").click(function () {
+        $.ajax({
+
+            url: '/Produit/Edit',
+            data: {
+                ID: $(this).attr('data-id')
+            }
+
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+
+    $(".deleteBtn").click(function () {
+
+        var confirmDelete = confirm("Etes vous sur de vouloir supprimer cet article?")
+
+        if (confirmDelete ) {
+            $.ajax({
+                type: 'POST',
+                url: '/Produit/Delete',
+                data: {
+                    ID: $(this).attr('data-id')
+                }
+
+            })
+                .done(function (response) {
+                    $("#tableContainer").html(response);
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("ECHEC");
+                });
+        }
+       
     });
 </script>

@@ -41,5 +41,26 @@ namespace BierBuyFR.Web.Controllers
             produitsService.SaveProduit(produit);
             return RedirectToAction("ProduitTable");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int ID)
+        {
+            var produit = produitsService.GetProduit(ID);
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Produit produit)
+        {
+            produitsService.UpdateProduit(produit);
+            return RedirectToAction("ProduitTable");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int ID)
+        {
+            produitsService.DeleteProduit(ID);
+            return RedirectToAction("ProduitTable");
+        }
     }
 }
