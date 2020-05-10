@@ -10,7 +10,7 @@ namespace BierBuyFR.Database
 {
     public class BBFRContext : DbContext, IDisposable
     {
-        public BBFRContext(): base("BierBuyFRConnection") 
+        public BBFRContext(): base("BierBuyFR") 
         {
         }
         //Création des tables de la bibliothéque Entitie

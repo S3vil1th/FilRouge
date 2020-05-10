@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace BierBuyFR.Services
 {
@@ -14,7 +15,8 @@ namespace BierBuyFR.Services
         {
             using (var context = new BBFRContext())
             {
-                return context.Produits.ToList();
+                return context.Produits.Include(x=>x.Type_Produit).ToList();
+               
             }
         }
 
@@ -29,6 +31,8 @@ namespace BierBuyFR.Services
         {
             using (var context= new BBFRContext())
             {
+                context.Entry(produit.Type_Produit).State = EntityState.Unchanged;
+
                 context.Produits.Add(produit);
                 context.SaveChanges();
             }

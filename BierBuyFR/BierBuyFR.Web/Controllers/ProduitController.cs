@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Entitie;
 using BierBuyFR.Services;
+using BierBuyFR.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +33,24 @@ namespace BierBuyFR.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return PartialView();
+            Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
+            var type_produits = type_ProduitService.GetType_Produits();
+            return PartialView(type_produits);
         }
 
         [HttpPost]
-        public ActionResult Create(Produit produit)
+        public ActionResult Create(NewType_ProduitViewModel model)
         {
-            produitsService.SaveProduit(produit);
+            Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
+
+            var newProduit = new Produit();
+            newProduit.Nom = model.Nom;
+            newProduit.Description = model.Description;
+            newProduit.Prix = model.Prix;
+            //newProduit.Type_ProduitID = model.Type_ProduitID;
+            newProduit.Type_Produit = type_ProduitService.GetType_Produit(model.Type_ProduitID);
+
+            produitsService.SaveProduit(newProduit);
             return RedirectToAction("ProduitTable");
         }
 

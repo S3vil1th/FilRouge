@@ -15,6 +15,7 @@ namespace BierBuyFR.Entitie
         public string Type { get; set; }
         public string Description { get; set; }
 
+        public string ImageURL { get; set; }
         //Foreign Key vers Produit
         public List<Produit> Produits { get; set; }
     }

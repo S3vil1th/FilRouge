@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BierBuyFR.Services;
+using BierBuyFR.Web.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,14 @@ namespace BierBuyFR.Web.Controllers
 {
     public class HomeController : Controller
     {
+        Type_ProduitsServices type_produitsServices = new Type_ProduitsServices();
         public ActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+
+            model.Type_Produits = type_produitsServices.GetType_Produits();
+           
+            return View(model);
         }
 
         public ActionResult About()

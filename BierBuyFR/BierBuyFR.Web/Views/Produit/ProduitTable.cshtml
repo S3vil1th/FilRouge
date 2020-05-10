@@ -4,16 +4,35 @@
     ViewBag.Title = "ProduitTable";
 }
 
-<div>
-    <form method="post" >
-        <input id="searchTxt" name="Search" />
-        <button type="button" id="searchBtn"> Rechercher</button>
-    </form>
-    <button type="button" id="addBtn"> Nouveau </button>
-</div>
+    <div>
+        <form method="post">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Recherche</label>
+                        <input class="form-control" id="searchTxt" name="Search" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-6">
+                        <button class="form-control" type="button" id="searchBtn">Rechercher</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="form-control" type="button" id="addBtn"> Nouveau </button>
+                    </div>
+                    
+
+                </div>
+            </div>
+
+            
+        </form>
+        
+    </div>
 
 <div>
-    <table>
+    
+    <table class="table table-striped">
         <thead>
             <tr>
                 <td>Nom du Produit </td>
@@ -27,10 +46,20 @@
             {
                 <tr>
                     <td>@produit.Nom</td>
-                    <td>-</td>
+                    <td>
+
+                        @if (produit.Type_Produit != null)
+                        {
+                            <text> @produit.Type_Produit.Type</text>
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
                     <td>@produit.Prix</td>
                     <td>
-                        <button class="editBtn" data-id="@produit.ProduitID" >Modifier</button>
+                        <button class="editBtn" data-id="@produit.ProduitID">Modifier</button>
                         <button class="deleteBtn" data-id="@produit.ProduitID">Supprimer</button>
                     </td>
                 </tr>

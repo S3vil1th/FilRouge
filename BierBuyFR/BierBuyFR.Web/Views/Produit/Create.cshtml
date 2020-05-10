@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Type_Produit>
 @{
     ViewBag.Title = "Create";
 }
@@ -7,23 +7,33 @@
 <h2>Ajouter un produit</h2>
 
 <form id="createProduit">
-    <label>Nom</label>
-    <input name="Nom" />
+    <div class="form-group">
+        <label>Type</label>
+        <select class="form-control" name="Type_ProduitID">
+            @foreach (var type_produit in Model)
+            {
+                <option value="@type_produit.Type_ProduitID">@type_produit.Type</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Nom</label>
+        <input class="form-control" name="Nom" />
 
-    <br />
-
-    <label>Description</label>
-    <input name="Description" />
-
-    <br />
-
-    <label>Prix</label>
-    <input name="Prix" />
-
-    <br />
-
-    <button id="saveBtn" type="button">Ajouter</button>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" name="Description" />
+    </div>
+    <div class="form-group">
+        <label>Prix</label>
+        <input class="form-control" name="Prix" />
+    </div>
+    
+    <button id="saveBtn" type="button" class="btn btn-primary">Ajouter</button>
 </form>
+
+
 
 <script>
     $("#saveBtn").click(function () {
