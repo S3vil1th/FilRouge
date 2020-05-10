@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BierBuyFR.Web.ViewModels
+namespace BierBuyFR.Web.ViewModel
 {
-    public class NewType_ProduitViewModel
+    public class NewProduitsViewModels
     {
         public string Nom { get; set; }
         public string Description { get; set; }
-        
-        public int Prix { get; set; }
+        public decimal Prix { get; set; }
+
         public int Type_ProduitID { get; set; }
     }
 }

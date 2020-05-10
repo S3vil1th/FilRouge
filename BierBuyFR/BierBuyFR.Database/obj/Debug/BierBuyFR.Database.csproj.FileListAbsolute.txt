@@ -26,3 +26,17 @@ C:\Users\S3V\Source\Repos\FilRouge2\BierBuyFR\BierBuyFR.Database\obj\Debug\BierB
 C:\Users\S3V\Source\Repos\FilRouge2\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.csproj.CopyComplete
 C:\Users\S3V\Source\Repos\FilRouge2\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.dll
 C:\Users\S3V\Source\Repos\FilRouge2\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.pdb
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\BierBuyFR.Database.dll.config
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\BierBuyFR.Database.dll
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\BierBuyFR.Database.pdb
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\BierBuyFR.Entitie.dll
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\EntityFramework.dll
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\BierBuyFR.Entitie.pdb
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\EntityFramework.xml
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.csprojAssemblyReference.cache
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.csproj.CoreCompileInputs.cache
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.csproj.CopyComplete
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.dll
+C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Database\obj\Debug\BierBuyFR.Database.pdb

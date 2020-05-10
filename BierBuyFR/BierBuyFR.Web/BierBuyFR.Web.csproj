@@ -184,6 +184,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\HomeViewModels.cs" />
+    <Compile Include="ViewModel\ProduitsViewModels.cs" />
     <Compile Include="ViewModel\Type_ProduitViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +398,10 @@
     <Content Include="Content\images\shop\sh-detail\thumb-detail-10.jpg" />
     <Content Include="Content\images\shop\sh-detail\thumb-detail-11.jpg" />
     <Content Include="Content\images\shop\sh-detail\thumb-detail-12.jpg" />
+    <Content Include="Content\images\slider\bieres.jpg" />
+    <Content Include="Content\images\slider\slide-biere2.jpg" />
+    <Content Include="Content\images\slider\slide-biere3.jpg" />
+    <Content Include="Content\images\slider\slide-bieres.jpg" />
     <Content Include="Content\images\slider\slider-bg-1.jpg" />
     <Content Include="Content\images\slider\slider-bg-2.jpg" />
     <Content Include="Content\images\slider\slider-bg-3.jpg" />

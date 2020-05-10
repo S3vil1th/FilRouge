@@ -11,12 +11,14 @@ namespace BierBuyFR.Web.Controllers
     public class HomeController : Controller
     {
         Type_ProduitsServices type_produitsServices = new Type_ProduitsServices();
+        ProduitServices produitServices = new ProduitServices();
         public ActionResult Index()
         {
             HomeViewModel model = new HomeViewModel();
 
             model.Type_Produits = type_produitsServices.GetType_Produits();
-           
+            model.Produits = produitServices.GetProduits();
+
             return View(model);
         }
 
