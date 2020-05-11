@@ -394,3 +394,12 @@ C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.
 C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.csproj.CopyComplete
 C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.dll
 C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.pdb
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Entitie.dll
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Services.dll
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Database.dll
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Entitie.pdb
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Services.pdb
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Services.dll.config
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Database.pdb
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\bin\BierBuyFR.Database.dll.config
+C:\Users\Laurent\Source\Repos\FilRouge\BierBuyFR\BierBuyFR.Web\obj\Debug\BierBuyFR.Web.csprojAssemblyReference.cache
