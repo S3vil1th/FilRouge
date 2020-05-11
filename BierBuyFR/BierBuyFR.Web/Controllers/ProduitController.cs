@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Entitie;
 using BierBuyFR.Services;
+using BierBuyFR.Web.ViewModel;
 using BierBuyFR.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,12 +35,14 @@ namespace BierBuyFR.Web.Controllers
         public ActionResult Create()
         {
             Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
-            var type_produits = type_ProduitService.GetType_Produits();
-            return PartialView(type_produits);
+            NewProduitsViewModels model = new NewProduitsViewModels();
+            model.type_produit = type_ProduitService.GetAllType_Produits();
+
+            return PartialView(model);
         }
 
         [HttpPost]
-        public ActionResult Create(NewType_ProduitViewModel model)
+        public ActionResult Create(NewProduitsViewModels model)
         {
             Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
 
@@ -54,18 +57,45 @@ namespace BierBuyFR.Web.Controllers
             return RedirectToAction("ProduitTable");
         }
 
+        [HttpPost]
+        public ActionResult Edit(EditProduitViewModel model)
+        {
+            ProduitServices produitService = new ProduitServices();
+
+            var existingProduct = produitService.GetProduit(model.ID);
+            existingProduct.Nom = model.Nom;
+            existingProduct.Description = model.Description;
+            existingProduct.Prix = model.Prix;
+
+            existingProduct.Type_Produit = null; 
+            existingProduct.Type_ProduitID = model.Type_ProduitID;
+
+
+
+
+            produitsService.UpdateProduit(existingProduct);
+
+            return RedirectToAction("ProduitTable");
+        }
+
         [HttpGet]
         public ActionResult Edit(int ID)
         {
-            var produit = produitsService.GetProduit(ID);
-            return PartialView();
-        }
+            EditProduitViewModel model = new EditProduitViewModel();
+            Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
+            ProduitServices produitService = new ProduitServices();
 
-        [HttpPost]
-        public ActionResult Edit(Produit produit)
-        {
-            produitsService.UpdateProduit(produit);
-            return RedirectToAction("ProduitTable");
+            var produit = produitService.GetProduit(ID);
+
+            model.ID = produit.ProduitID;
+            model.Nom = produit.Nom;
+            model.Description = produit.Description;
+            model.Prix = produit.Prix;
+            model.Type_ProduitID = produit.Type_ProduitID;
+            
+
+            model.type_produit = type_ProduitService.GetType_Produits();
+            return PartialView(model);
         }
 
         [HttpPost]

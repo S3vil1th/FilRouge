@@ -1,4 +1,5 @@
-﻿@model List<Type_Produit>
+﻿@using BierBuyFR.Web.ViewModel
+@model NewProduitsViewModels
 @{
     ViewBag.Title = "Create";
 }
@@ -10,7 +11,7 @@
     <div class="form-group">
         <label>Type</label>
         <select class="form-control" name="Type_ProduitID">
-            @foreach (var type_produit in Model)
+            @foreach (var type_produit in Model.type_produit)
             {
                 <option value="@type_produit.Type_ProduitID">@type_produit.Type</option>
             }

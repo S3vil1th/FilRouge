@@ -5,22 +5,32 @@
 
 
 
-<div class="container">
-    <div id="tableContainer">
-        @{
-            Html.RenderAction("ProduitTable");
+    <section class="flat-row flat-iconbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-section">
+                        <h2 class="title">
+                            Produits
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div id="tableContainer">
+                @{
+                    Html.RenderAction("ProduitTable");
 
-        }
-    </div>
+                }
+            </div>
 
-    </hr>
+            <hr />
 
-    <div id="actionContainer">
+            <div id="actionContainer">
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
-
+</section>
 
 

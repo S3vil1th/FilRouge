@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Entitie;
 using BierBuyFR.Services;
+using BierBuyFR.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,49 +16,75 @@ namespace BierBuyFR.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var type_produits = type_produitService.GetType_Produits();
-           
-            return View(type_produits);
+            return View();
         }
 
+        public ActionResult CategoryTable(string search)
+        {
+            var type_produits = type_produitService.GetType_Produits();
+
+            if (string.IsNullOrEmpty(search) == false)
+            {
+                type_produits = type_produits.Where(p => p.Type != null && p.Type.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return PartialView(type_produits);
+        }
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            NewType_ProduitViewModel model = new NewType_ProduitViewModel();
+            return PartialView(model);
         }
         [HttpPost]
-        public ActionResult Create(Type_Produit type_Produit)
+        public ActionResult Create(NewType_ProduitViewModel model)
         {
-            type_produitService.SaveType_Produit(type_Produit);
-            return RedirectToAction("Index");
+
+            var newCategory = new Type_Produit();
+            newCategory.Type = model.Type;
+            newCategory.Description = model.Description;
+            newCategory.ImageURL = model.ImageURL;
+            
+
+            type_produitService.SaveType_Produit(newCategory);
+
+            return RedirectToAction("CategoryTable");
         }
 
         [HttpGet]
         public ActionResult Edit(int ID)
         {
+            EditType_ProduitViewModel model = new EditType_ProduitViewModel();
             var type_produits = type_produitService.GetType_Produit(ID);
-            return View(type_produits);
+            model.ID = type_produits.Type_ProduitID;
+            model.Type = type_produits.Type;
+            model.Description = type_produits.Description;
+            model.ImageURL = type_produits.ImageURL;
+            
+            return PartialView(model);
         }
         [HttpPost]
-        public ActionResult Edit(Type_Produit type_produit)
+        public ActionResult Edit(EditType_ProduitViewModel model)
         {
-            type_produitService.UpdateType_Produit(type_produit);
-            return RedirectToAction("Index");
+            var existingCategory = type_produitService.GetType_Produit(model.ID);
+            existingCategory.Type = model.Type;
+            existingCategory.Description = model.Description;
+            existingCategory.ImageURL = model.ImageURL;
+            
+
+            type_produitService.UpdateType_Produit(existingCategory);
+
+            return RedirectToAction("CategoryTable");
         }
 
-        [HttpGet]
+
+        
+        [HttpPost]
         public ActionResult Delete(int ID)
         {
-            var type_produit = type_produitService.GetType_Produit(ID);
-            return View(type_produit);
-        }
-        [HttpPost]
-        public ActionResult Delete(Type_Produit type_produit)
-        {
            
-            type_produitService.DeleteType_Produit(type_produit.Type_ProduitID);
+            type_produitService.DeleteType_Produit(ID);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("CategoryTable");
         }
     }
 }

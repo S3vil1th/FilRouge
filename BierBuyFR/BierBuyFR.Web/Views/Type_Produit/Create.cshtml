@@ -1,32 +1,39 @@
 ﻿
 @{
     ViewBag.Title = "Create";
+
+    var imageURL = "/Content/images/system/camera.jpg";
 }
 
-<h2>Creer type de produit</h2>
+<h2>Creer categorie</h2>
 
-<form method="post">
-    <label>Type</label>
-    <input name="Type" />
-
-    <br />
-
-    <label>Description</label>
-    <input name="Description" />
-
-    <br />
-
-    <label>Image</label>
-    <input id="ImageURL" name="ImageURL" type="hidden"/>
-    <input id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
-   
-    <div class="thumb">
-        <img id="type_produitImage" />     
+<form id="createCategory">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>Nom <span class="text-danger">*</span></label>
+                <input class="form-control" name="Type" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" />
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="hidden" id="ImageURL" name="ImageURL" />
+                <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+            </div>
+            
+        </div>
+        <div class="col-md-4">
+            <div class="thumb">
+                <img class="img-thumbnail img-fluid" id="type_produitImage" src="@imageURL" />
+            </div>
+        </div>
     </div>
 
-    <br />
-
-    <button type="submit">Ajouter</button>
+    <button id="saveBtn" type="button" class="btn btn-primary">Enregistrer</button>
+    <button id="cancelBtn" type="button" class="btn btn-primary">Annuler</button>
 </form>
 
 <script>
@@ -64,4 +71,28 @@
                 alert("ECHEC");
             });
     });
+   
+    $("#saveBtn").click(function () {
+        
+			$.ajax({
+				type: 'POST',
+				 url: '/Type_Produit/Create',
+				data: $("#createCategory").serialize()
+			})
+			.done(function (response) {
+				$("#tableContainer").html(response);
+				$("#actionContainer").html("");
+				focusAction("tableContainer");
+			})
+			.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+				
+			});
+		
+		
+	});
+	$("#cancelBtn").click(function () {
+		$("#actionContainer").html("");
+		focusAction("tableContainer");
+	});
 </script>

@@ -17,7 +17,14 @@ namespace BierBuyFR.Services
                 return context.Type_Produits.ToList();
             }
         }
-
+        public List<Type_Produit> GetAllType_Produits()
+        {
+            using (var context = new BBFRContext())
+            {
+                return context.Type_Produits
+                        .ToList();
+            }
+        }
         public Type_Produit GetType_Produit(int ID)
         {
             using (var context = new BBFRContext())

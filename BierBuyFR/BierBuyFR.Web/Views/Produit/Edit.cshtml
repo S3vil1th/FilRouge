@@ -1,5 +1,6 @@
-﻿
-@model Produit
+﻿@using BierBuyFR.Web.ViewModel
+
+@model EditProduitViewModel
 @{
     ViewBag.Title = "Edit";
 }
@@ -8,9 +9,20 @@
 <h2>Modifier le produit</h2>
 
 <form id="editProduit">
-    <input name="ID" value="@Model.ProduitID"/>
+    <input name="ID" value="@Model.ID" type="hidden" />
+
+    <div class="form-group">
+        <label>Categorie</label>
+        <select class="form-control" name="Type_ProduitID">
+            @foreach (var category in Model.type_produit)
+            {
+                var selected = category.Type_ProduitID == Model.Type_ProduitID ? "selected" : string.Empty;
+                <option value="@category.Type_ProduitID" @selected>@category.Type</option>
+            }
+        </select>
+    </div>
     <label>Nom</label>
-    <input name="Nom" value="@Model.Nom"/>
+    <input name="Nom" value="@Model.Nom" />
 
     <br />
 
@@ -30,7 +42,7 @@
 <script>
     $("#updateBtn").click(function () {
         $.ajax({
-            type:'POST',
+            type: 'POST',
             url: '/Produit/Edit',
             data: $("#editProduit").serialize()
 
