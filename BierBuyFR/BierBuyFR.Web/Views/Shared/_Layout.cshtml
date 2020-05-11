@@ -4,7 +4,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Bier Buy</title>
+    <title>Beer Buy</title>
 
     <meta name="author" content="themesflat.com">
 
@@ -48,7 +48,7 @@
             <header id="header" class="header clearfix">
                 <div class="container-fluid clearfix container-width-93" id="site-header-inner">
                     <div id="logo" class="logo float-left">
-                        <a href="index.html" title="logo">
+                        <a href="@Url.Action("Index", "Home")" title="logo">
                             <img src="~/Content/images/beer.jpg" alt="image" width="107" height="24" data-retina="images/logo@2x.png" data-width="107" data-height="24">
                         </a>
                     </div><!-- /.logo -->
@@ -83,10 +83,10 @@
                         <nav id="mainnav" class="mainnav">
                             <ul class="menu">
                                 <li>
-                                    <a href="index.html">HOME</a>
+                                    <a href="@Url.Action("Index", "Home")">HOME</a>
                                     <ul class="submenu">
-                                        <li><a href="index.html">Homepage Style 1</a></li>
-                                        <li><a href="index-v2.html">Homepage Style 2</a></li>
+                                        <li><a href="@Url.Action("Index", "Type_Produit")">Liste des Catégories (Editeur)</a></li>
+                                        <li><a href="@Url.Action("Index", "Produit")">Liste des Produits (Editeur)</a></li>
                                         <li><a href="index-v3.html">Homepage Style 3</a></li>
                                         <li><a href="index-v4.html">Homepage Style 4</a></li>
                                         <li><a href="index-v5.html">Homepage Style 5</a></li>
