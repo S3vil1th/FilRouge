@@ -73,3 +73,5 @@ NuGet.exe
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+*.mdf
+*.ldf
