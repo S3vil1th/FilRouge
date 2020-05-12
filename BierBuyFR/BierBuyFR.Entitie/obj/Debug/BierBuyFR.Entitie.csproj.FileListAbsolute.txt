@@ -16,7 +16,6 @@ C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBu
 C:\Users\S3V\Source\Repos\FilRouge3\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.pdb
 C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\bin\Debug\BierBuyFR.Entitie.dll
 C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\bin\Debug\BierBuyFR.Entitie.pdb
-C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.csprojAssemblyReference.cache
 C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.csproj.CoreCompileInputs.cache
 C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.dll
 C:\Users\S3V\Source\Repos\FilRouge4\BierBuyFR\BierBuyFR.Entitie\obj\Debug\BierBuyFR.Entitie.pdb

@@ -17,6 +17,22 @@ namespace BierBuyFR.Services
                 return context.Type_Produits.ToList();
             }
         }
+
+        public int GetType_ProduitCount(string search)
+        {
+            using (var context = new BBFRContext())
+            {
+                if (!string.IsNullOrEmpty(search))
+                {
+                    return context.Type_Produits.Where(type_produit => type_produit.Type != null &&
+                    type_produit.Type.ToLower().Contains(search.ToLower())).Count();
+                }
+                else
+                {
+                    return context.Type_Produits.Count();
+                }
+            }
+        }
         public List<Type_Produit> GetAllType_Produits()
         {
             using (var context = new BBFRContext())

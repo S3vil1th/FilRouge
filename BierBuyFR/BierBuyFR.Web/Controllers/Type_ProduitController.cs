@@ -1,6 +1,6 @@
 ﻿using BierBuyFR.Entitie;
 using BierBuyFR.Services;
-using BierBuyFR.Web.ViewModels;
+using BierBuyFR.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +21,13 @@ namespace BierBuyFR.Web.Controllers
 
         public ActionResult CategoryTable(string search)
         {
-            var type_produits = type_produitService.GetType_Produits();
+            Type_ProduitSearchViewModel model = new Type_ProduitSearchViewModel();
+            model.Search = search;
 
-            if (string.IsNullOrEmpty(search) == false)
-            {
-                type_produits = type_produits.Where(p => p.Type != null && p.Type.ToLower().Contains(search.ToLower())).ToList();
-            }
-            return PartialView(type_produits);
+            var totalDeProduits = type_produitService.GetType_ProduitCount(search);
+            model.Type_Produits = type_produitService.GetType_Produits();
+            
+            return PartialView("CategoryTable",model);
         }
         [HttpGet]
         public ActionResult Create()

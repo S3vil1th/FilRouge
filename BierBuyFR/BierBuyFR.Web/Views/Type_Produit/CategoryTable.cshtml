@@ -1,8 +1,6 @@
-﻿@using BierBuyFR.Entitie
-@model List<Type_Produit>
-    @{
-    ViewBag.Title = "CategoryTable";
-    }
+﻿
+@model BierBuyFR.Web.ViewModel.Type_ProduitSearchViewModel
+  
 
     <div>
         <form method="post">
@@ -37,36 +35,31 @@
                 <tr>
                     <th class="font-weight-bold">Nom de la catégorie</th>
                     <th class="font-weight-bold">Description</th>
-                    <th class="font-weight-bold">Nombre de produits</th>
+                    
                     <th class="font-weight-bold wrap-td">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var type_Produit in Model)
+                @if (Model.Type_Produits != null && Model.Type_Produits.Count > 0)
                 {
-                <tr>
-                    <td>@type_Produit.Type</td>
-                    <td>
+                    foreach (var type_Produit in Model.Type_Produits)
+                    {
+                        <tr>
+                            <td>@type_Produit.Type</td>
 
-                        @if (type_Produit.Type != null)
-                        {
-                        <text> @type_Produit.Type</text>
-                        }
-                        else
-                        {
-                        <text>-</text>
-                        }
-                    </td>
-                    <td>@type_Produit.Description</td>
-                    <td>
-                        @type_Produit.Produits.Count
-                    </td>
-                    <td>
-                        <button class="editBtn" data-id="@type_Produit.Type_ProduitID">Modifier</button>
-                        <button class="deleteBtn" data-id="@type_Produit.Type_ProduitID">Supprimer</button>
-                    </td>
-                </tr>
+                            <td>@type_Produit.Description</td>
+                            
+                            <td class="wrap-td">
+                                <button class="editBtn" data-id="@type_Produit.Type_ProduitID">Modifier</button>
+                                <button class="deleteBtn" data-id="@type_Produit.Type_ProduitID">Supprimer</button>
+                            </td>
+                        </tr>
 
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="3" class="text-danger">Aucune catégorie trouvée</td></tr>
                 }
             </tbody>
         </table>
