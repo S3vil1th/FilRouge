@@ -1,0 +1,49 @@
+﻿using BierBuyFR.Services;
+using BierBuyFR.Web.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Helpers;
+using System.Web.Mvc;
+
+namespace BierBuyFR.Web.Controllers
+{
+    public class CommandeController : Controller
+    {
+        CommandeService commandeService = new CommandeService();
+        // GET: Commande
+        public ActionResult Index(string userID, string statut)
+        {
+            
+
+            CommandeViewModels model = new CommandeViewModels();
+            model.UserID = userID;
+            model.Statut = statut;
+
+           
+            return View(model);
+        }
+
+        public ActionResult Details (int ID)
+        {
+            CommandeDetailsViewModels model = new CommandeDetailsViewModels();
+
+            model.Commande = commandeService.GetCommandeByID(ID);
+
+            model.StatutDisponible = new List<string>() { "En attente de traitement", "En cours de traitement", "Expédié" };
+
+            return View(model);
+        }
+
+        public JsonResult ChangementStatut(string statut, int ID)
+        {
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            result.Data = new { Success = commandeService.UpdateCommandeStatut(ID, statut) };
+
+            return result;
+        }
+    }
+}

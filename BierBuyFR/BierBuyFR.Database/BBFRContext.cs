@@ -16,5 +16,8 @@ namespace BierBuyFR.Database
         //Création des tables de la bibliothéque Entitie
         public DbSet<Produit> Produits { get; set; }
         public DbSet<Type_Produit> Type_Produits { get; set; }
+
+        public DbSet<Commande> Commandes { get; set; }
+        public DbSet<ProduitsCommande> ProduitsCommandes { get; set; }
     }
 }

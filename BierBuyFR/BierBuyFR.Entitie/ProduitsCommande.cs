@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BierBuyFR.Entitie
 {
-    class ProduitsCommande
+    public class ProduitsCommande
     {
         public int ID { get; set; }
         public int Quantite { get; set; }

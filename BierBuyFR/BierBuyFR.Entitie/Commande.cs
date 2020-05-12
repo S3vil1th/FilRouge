@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace BierBuyFR.Entitie
 {
-    class Commande
+    public class Commande
     {
         public int ID { get; set; }
         public string UserID { get; set; }
         public DateTime DateCommande { get; set; }
-        public string statut { get; set; }
+        public string Statut { get; set; }
 
         public decimal MontantTotal { get; set; }
 

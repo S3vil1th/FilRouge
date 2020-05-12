@@ -1,0 +1,87 @@
+﻿@model BierBuyFR.Web.ViewModels.CommandeViewModels
+@{
+    ViewBag.Title = "Commandes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="flat-row flat-iconbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-section">
+                        <h2 class="title">
+                            Commandes
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tableContainer">
+
+                <div>
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Recherche</label>
+                                    <input class="form-control" id="searchTxt" name="UserID" value="@Model.UserID" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Action</label>
+                                    <div class="row">
+                                        <div class="col-md-6 pr-0">
+                                            <button class="btn btn-primary form-control" type="submit" id="searchBtn">Recherche</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <table id="CommandeTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="font-weight-bold">Utilisateur ID</th>
+                                <th class="font-weight-bold">Prix Total</th>
+                                <th class="font-weight-bold">Statut</th>
+                                <th class="font-weight-bold wrap-td">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Commandes != null && Model.Commandes.Count > 0)
+                            {
+
+                                foreach (var order in Model.Commandes)
+                                {
+                                    <tr>
+                                        <td>@order.UserID</td>
+                                        <td>
+                                            @order.MontantTotal
+                                        </td>
+                                        <td>@order.Statut</td>
+                                        <td class="wrap-td">
+                                            <a class="detailBtn" data-id="@order.ID" href="@Url.Action("Details", "Commande")">Details</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="text-danger" colspan="4">Aucunes commandes trouvées</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+
+            <hr />
+        </div>
+    </section>
+

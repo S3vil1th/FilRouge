@@ -1,0 +1,101 @@
+﻿
+@model BierBuyFR.Web.ViewModels.CommandeDetailsViewModels
+
+@if (Model != null && Model.Commande != null)
+{
+    var i = 1;
+    <section class="flat-row main-shop shop-slidebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Votre commande</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @foreach (var produitCommande in Model.Commande.ProduitsCommandes)
+                        {
+                            <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@produitCommande.ID">
+                                <div>
+                                    <h6 class="my-0">@i - @produitCommande.Produit.Nom - Qty: @produitCommande.Quantite</h6>
+                                    <small class="text-muted">@(produitCommande.Produit.Description.Length > 100 ? produitCommande.Produit.Description.Substring(0, 99) : produitCommande.Produit.Description)</small>
+                                </div>
+                                <span class="text-muted">Prix unitaire: @produitCommande.Produit.Prix - Prix total: @(produitCommande.Quantite * produitCommande.Produit.Prix)</span>
+                            </li>
+
+                            i++;
+                        }
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total</span>
+                            <strong>€ @Model.Commande.MontantTotal</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Adresse de livraison</h4>
+                    <form class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="Nom">Nom</label>
+                                <input type="text" class="form-control" id="Nom" placeholder="" value="@Model.Acheteur.Nom" required="">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                            <input type="email" class="form-control" id="Email" placeholder="you@example.com" value="@Model.Acheteur.Email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" class="form-control" id="adresse" placeholder="1234 Main St" required="" value="@Model.Acheteur.Adresse">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="adresse">Statut</label>
+                            <select name="Statut" id="changeStatut">
+                                @foreach (var statutDisponible in Model.StatutDisponible)
+                                {
+                                    var statutActuel = statutDisponible == Model.Commande.Statut;
+
+                                    <option @(statutActuel ? "selectionné" : string.Empty)>@statutDisponible</option>
+                                }
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </section>
+
+<script>
+	$("#changeStatut").change(function () {
+		$.ajax({
+			url: '/Commande/ChangeStatut',
+			data: {
+				status: $("#changeStatut").val(),
+				ID: '@Model.Commande.ID'
+			}
+		})
+        .done(function (response) {
+        	if(response.Success)
+        	{
+        		swal("Felicitation", "Votre commande a été mise a jour");
+        	}
+        	else {
+        		swal("Erreur", "Impossible de mettre a jour votre commande");
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("ECHEC");
+        });
+	});
+</script>
+}
+else
+{
+<div>
+    <b>Details de commande non disponible</b>
+</div>
+}
