@@ -1,0 +1,9 @@
+Si au fur et à mesure des commits, ou après un git clone, le .gitignore peut ne plus fonctionner, Git indexe alors des fichiers qui ne le devrait pas l'être. Il faut donc tout réinitialiser.
+
+archivage de tout le code modifié non versionné ;
+suppression de l'index
+git rm -r --cached .
+réimportation de tout l'index (le .gitignore est maintenant pris en compte) :
+git add .
+commit des changements :
+git commit -m ".gitignore est maintenant fonctionnel"
