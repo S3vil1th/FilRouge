@@ -1,0 +1,80 @@
+﻿@model BierBuyFR.Web.ViewModel.FiltreProduitsViewModel
+@{
+
+    var defaultImageURL = "/Content/images/system/camera.jpg";
+}
+
+
+<div class="product-content product-threecolumn product-slidebar clearfix">
+    <ul class="product style2 sd1">
+
+        @foreach (var produit in Model.Produits)
+        {
+            var imageURL = string.IsNullOrEmpty(produit.ImageURL) ? defaultImageURL : produit.ImageURL;
+
+            <li class="product-item">
+                <div class="product-thumb clearfix">
+                    <a href="#">
+                        <img src="@imageURL" alt="image" style="height: 295px;">
+                    </a>
+                </div>
+                <div class="product-info clearfix">
+                    <span class="product-title">
+                        @produit.Nom
+                    </span>
+                    <div class="price">
+                        <ins>
+                            <span class="amount">$ @produit.Prix</span>
+                        </ins>
+                    </div>
+                </div>
+                <div class="add-to-cart text-center">
+                    <a class="ajouterProduitAuPanier" data-id="@produit.ProduitID">Ajouter au panier</a>
+                </div>
+                <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+            </li>
+        }
+    </ul><!-- /.product -->
+</div><!-- /.product-content -->
+
+
+
+<div class="product-pagination text-center clearfix">
+    <ul class="flat-pagination">
+
+        <li class="prev">
+            <a data-href="@Url.Action("FiltreProduit", "Shop", new {  sortBy = Model.SortBy, categoryID = Model.Type_ProduitID })" class="pageDataLink"><i class="fa fa-angle-left"></i></a>
+        </li>
+
+    </ul><!-- /.flat-pagination -->
+</div>
+}
+
+<input type="hidden" id="SearchTerm" value="@Model.Search" />
+<input type="hidden" id="SortBy" value="@Model.SortBy" />
+<input type="hidden" id="CategoryID" value="@Model.Type_ProduitID" />
+
+<script>
+	$(".pageDataLink").click(function () {
+		var url = $(this).attr("data-href");
+		if (url != "" || url != undefined) {
+			GetData(url);
+		}
+	});
+	var produits;
+    $(".ajouterProduitAuPanier").click(function () {
+        var existingCookieData = $.cookie('PanierProduits');
+		if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null)
+		{
+			produits = existingCookieData.split('-');
+		}
+		else {
+			produits = [];
+		}
+		var produitID = $(this).attr('data-id');
+		produits.push(produitID);
+        $.cookie('PanierProduits', produits.join('-'), { path: '/' });
+        updatePanierProduits();
+		swal("Effectué", "Produit ajouté avec succés");
+	});
+</script>

@@ -81,10 +81,10 @@
         .done(function (response) {
         	if(response.Success)
         	{
-        		swal("Felicitation", "Votre commande a été mise a jour");
+        		swal("Felicitation", "Votre commande a été mise a jour","success");
         	}
         	else {
-        		swal("Erreur", "Impossible de mettre a jour votre commande");
+                swal("Erreur", "Impossible de mettre a jour votre commande","warning");
         	}
         })
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {

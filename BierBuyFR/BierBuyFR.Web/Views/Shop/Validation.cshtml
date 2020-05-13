@@ -1,0 +1,100 @@
+﻿@using BierBuyFR.Web.ViewModel
+@model ValiderViewModel
+
+@if (Model != null && Model.PanierProduits != null && Model.PanierProduits.Count > 0)
+{
+    var i = 1;
+    <section class="flat-row main-shop shop-slidebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Votre panier</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @foreach (var produit in Model.PanierProduits)
+                        {
+                            var QuantiteProduits = Model.PanierProduitID.Where(produitID => produitID == produit.ProduitID).Count();
+
+                            <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@produit.ProduitID">
+                                <div>
+                                    <h6 class="my-0">@i - @produit.Nom - Qty: @QuantiteProduits</h6>
+                                    <small class="text-muted">@(produit.Description.Length > 100 ? produit.Description.Substring(0, 99) : produit.Description)</small>
+                                </div>
+                                <span class="text-muted">Prix a l'unité: € @produit.Prix - Prix Total: € @(QuantiteProduits * produit.Prix)</span>
+                            </li>
+
+                            i++;
+                        }
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total </span>
+                            <strong>€ @Model.PanierProduits.Sum(x => x.Prix * Model.PanierProduitID.Where(produitID => produitID == x.ProduitID).Count())</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Adresse de livraison</h4>
+                    <form class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="Nom">Nom</label>
+                                <input type="text" class="form-control" id="Nom" placeholder="" value="@Model.User.Nom" required="">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                            <input type="email" class="form-control" id="Email" placeholder="example@example.com" value="@Model.User.Email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Adresse">Adresse</label>
+                            <input type="text" class="form-control" id="Adresse" placeholder="12 rue principale" required="" value="@Model.User.Adresse">
+                        </div>
+
+                        <hr class="mb-4">
+                        <button id="passerCommandeBtn" class="btn btn-primary btn-lg btn-block" type="button">Passer commande</button>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </section>
+    <script>
+        $("#passerCommandeBtn").click(function () {
+       
+        $.ajax({
+            
+            url: '@Url.Action("AjouterCommande", "Shop")',
+			data: {
+				produitsIDs: '@string.Join("-", Model.PanierProduitID)'
+			}
+		})
+        .done(function (response) {
+        	if(response.Success)
+        	{
+        		$.cookie('PanierProduits', '', { path: '/' });
+                updatePanierProduits();
+
+        		swal("Félicitation", "Votre commande a été passée","success").then((value) => {
+        			window.location = '@Url.Action("Index", "Shop")';
+        		});;
+        	}
+        	else{
+        		swal("Echec", "Impossible de passer une commande, contactez un administrateur","warning");
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("ECHEC");
+        });
+	});
+    </script>
+}
+else
+{
+    <div>
+        <b>Aucun produits dans le panier</b>
+    </div>
+}
+
+

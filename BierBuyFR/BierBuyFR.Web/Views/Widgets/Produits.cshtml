@@ -1,0 +1,57 @@
+﻿@model BierBuyFR.Web.ViewModel.ProduitsWidgetViewModels
+@{
+    var defaultImageURL = "/Content/images/system/camera.jpg";
+}
+
+@if (Model != null && Model.Produits != null)
+{
+    if (!Model.DernierProduit)
+    {
+        <ul class="flat-filter style-1 text-center max-width-682 clearfix">
+            <li class="active"><a href="#" data-filter="*">Tout les produits</a></li>
+
+            @foreach (var type_produit in Model.Produits.Select(x => x.Type_Produit).ToList().Distinct())
+            {
+                <li><a href="#" data-filter=".@type_produit.Type.ToLower()">pour @type_produit.Type</a></li>
+            }
+        </ul>
+        <div class="divider h54"></div>
+    }
+
+    <div class="product-content product-fourcolumn clearfix">
+        <ul class="product style2 isotope-product clearfix">
+
+            @foreach (var produit in Model.Produits)
+            {
+                var imageURL = string.IsNullOrEmpty(produit.ImageURL) ? defaultImageURL : produit.ImageURL;
+
+                <li class="product-item @produit.Type_Produit.Type.ToLower()">
+                    <div class="product-thumb clearfix">
+                        <a href="@Url.Action("Details", "Produit", new { ID = produit.ProduitID })" class="product-thumb">
+                            <img src="@imageURL" alt="image" style="height: 250px;">
+                        </a>
+                        @if (Model.DernierProduit)
+                        {
+                            <span class="new">Nouveau</span>
+                        }
+                    </div>
+                    <div class="product-info text-center clearfix">
+                        <span class="product-title">
+                            @produit.Nom
+                        </span>
+                        <div class="price">
+                            <ins>
+                                <span class="amount">$ @produit.Prix</span>
+                            </ins>
+                        </div>
+                    </div>
+                    <div class="add-to-cart text-center">
+                        <a href="#">Ajouter au panier</a>
+                    </div>
+                    <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+

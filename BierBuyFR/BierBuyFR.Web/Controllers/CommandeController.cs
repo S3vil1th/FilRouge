@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Services;
 using BierBuyFR.Web.ViewModels;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,35 @@ using System.Web.Mvc;
 
 namespace BierBuyFR.Web.Controllers
 {
-    public class CommandeController : Controller
+    public class OrderController : Controller
+    {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+    }
+        public class CommandeController : Controller
     {
         CommandeService commandeService = new CommandeService();
         // GET: Commande
