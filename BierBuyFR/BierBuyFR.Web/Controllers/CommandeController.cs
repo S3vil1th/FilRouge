@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Services;
 using BierBuyFR.Web.ViewModels;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ using System.Web.Mvc;
 
 namespace BierBuyFR.Web.Controllers
 {
-    public class OrderController : Controller
+    public class CommandeController : Controller
     {
+        CommandeService commandeService = new CommandeService();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -37,42 +39,46 @@ namespace BierBuyFR.Web.Controllers
                 _userManager = value;
             }
         }
-    }
-        public class CommandeController : Controller
-    {
-        CommandeService commandeService = new CommandeService();
-        // GET: Commande
-        public ActionResult Index(string userID, string statut)
-        {
+
+        
             
+            // GET: Commande
+            public ActionResult Index(string userID, string statut)
+            {
 
-            CommandeViewModels model = new CommandeViewModels();
-            model.UserID = userID;
-            model.Statut = statut;
 
-           
-            return View(model);
-        }
+                CommandeViewModels model = new CommandeViewModels();
+                model.UserID = userID;
+                model.Statut = statut;
 
-        public ActionResult Details (int ID)
-        {
-            CommandeDetailsViewModels model = new CommandeDetailsViewModels();
+                model.Commandes = commandeService.SearchCommandes(userID, statut);
 
-            model.Commande = commandeService.GetCommandeByID(ID);
 
-            model.StatutDisponible = new List<string>() { "En attente de traitement", "En cours de traitement", "Expédié" };
+                return View(model);
+            }
 
-            return View(model);
-        }
+            public ActionResult Details(int ID)
+            {
+                CommandeDetailsViewModels model = new CommandeDetailsViewModels();
 
-        public JsonResult ChangementStatut(string statut, int ID)
-        {
-            JsonResult result = new JsonResult();
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+                model.Commande = commandeService.GetCommandeByID(ID);
 
-            result.Data = new { Success = commandeService.UpdateCommandeStatut(ID, statut) };
+                if (model.Commande != null)
+                {
+                    model.Acheteur = UserManager.FindById(model.Commande.UserID);
+                }
+                model.StatutDisponible = new List<string>() { "En attente de traitement", "En cours de traitement", "Expédié" };
+                return View(model);
+            }
 
-            return result;
+            public JsonResult ChangementStatut(string statut, int ID)
+            {
+                JsonResult result = new JsonResult();
+                result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+                result.Data = new { Success = commandeService.UpdateCommandeStatut(ID, statut) };
+
+                return result;
+            }
         }
     }
-}

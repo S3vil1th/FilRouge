@@ -257,12 +257,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\CommandeViewModels.cs" />
-    <Compile Include="ViewModel\HomeViewModels.cs" />
-    <Compile Include="ViewModel\ProduitsViewModels.cs" />
-    <Compile Include="ViewModel\ShopViewModel.cs" />
-    <Compile Include="ViewModel\Type_ProduitViewModels.cs" />
-    <Compile Include="ViewModel\WidgetViewModels.cs" />
+    <Compile Include="ViewModels\CommandeViewModels.cs" />
+    <Compile Include="ViewModels\HomeViewModels.cs" />
+    <Compile Include="ViewModels\ProduitsViewModels.cs" />
+    <Compile Include="ViewModels\ShopViewModel.cs" />
+    <Compile Include="ViewModels\Type_ProduitViewModels.cs" />
+    <Compile Include="ViewModels\WidgetViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.svg" />

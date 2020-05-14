@@ -69,12 +69,12 @@
         </div><!-- /.container -->
     </section>
 
-<script>
+    <script>
 	$("#changeStatut").change(function () {
 		$.ajax({
-			url: '/Commande/ChangeStatut',
+			url: '@Url.Action("ChangeStatut", "Commande")',
 			data: {
-				status: $("#changeStatut").val(),
+				statut: $("#changeStatut").val(),
 				ID: '@Model.Commande.ID'
 			}
 		})
@@ -91,7 +91,7 @@
         	alert("ECHEC");
         });
 	});
-</script>
+    </script>
 }
 else
 {

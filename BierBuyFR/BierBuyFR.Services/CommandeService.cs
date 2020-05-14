@@ -11,7 +11,7 @@ namespace BierBuyFR.Services
 {
     public class CommandeService
     {
-        public int SearchCommandes(string userID, string statut)
+        public List<Commande> SearchCommandes(string userID, string statut)
         {
             using (var context = new BBFRContext())
             {
@@ -26,7 +26,7 @@ namespace BierBuyFR.Services
                 {
                     commandes= commandes.Where(x => x.Statut.ToLower().Contains(statut.ToLower())).ToList();
                 }
-                return commandes.Count;
+                return commandes.ToList();
             }
         }
 

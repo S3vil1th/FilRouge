@@ -11,7 +11,7 @@ namespace BierBuyFR.Web.ViewModel
         public class ValiderViewModel
         {
             public List <Produit> PanierProduits { get; set; }
-            public List<int> PanierProduitID { get; set; }
+            public List<int> PanierProduitIDs { get; set; }
 
             public ApplicationUser User { get; set; }
         }

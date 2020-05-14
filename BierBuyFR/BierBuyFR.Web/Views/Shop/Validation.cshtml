@@ -14,7 +14,7 @@
                     <ul class="list-group mb-3">
                         @foreach (var produit in Model.PanierProduits)
                         {
-                            var QuantiteProduits = Model.PanierProduitID.Where(produitID => produitID == produit.ProduitID).Count();
+                            var QuantiteProduits = Model.PanierProduitIDs.Where(produitID => produitID == produit.ProduitID).Count();
 
                             <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@produit.ProduitID">
                                 <div>
@@ -29,7 +29,7 @@
 
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total </span>
-                            <strong>€ @Model.PanierProduits.Sum(x => x.Prix * Model.PanierProduitID.Where(produitID => produitID == x.ProduitID).Count())</strong>
+                            <strong>€ @Model.PanierProduits.Sum(x => x.Prix * Model.PanierProduitIDs.Where(produitID => produitID == x.ProduitID).Count())</strong>
                         </li>
                     </ul>
                 </div>
@@ -67,7 +67,7 @@
             
             url: '@Url.Action("AjouterCommande", "Shop")',
 			data: {
-				produitsIDs: '@string.Join("-", Model.PanierProduitID)'
+				produitsIDs: '@string.Join("-", Model.PanierProduitIDs)'
 			}
 		})
         .done(function (response) {
@@ -76,9 +76,9 @@
         		$.cookie('PanierProduits', '', { path: '/' });
                 updatePanierProduits();
 
-        		swal("Félicitation", "Votre commande a été passée","success").then((value) => {
-        			window.location = '@Url.Action("Index", "Shop")';
-        		});;
+        		swal("Félicitation", "Votre commande a été passée", "success").then((value) => {
+        			window.location = '@Url.Action("Index","Shop")';
+        		});
         	}
         	else{
         		swal("Echec", "Impossible de passer une commande, contactez un administrateur","warning");

@@ -1,5 +1,6 @@
 ﻿using BierBuyFR.Entitie;
 using BierBuyFR.Services;
+using BierBuyFR.Web.MethodeEnum;
 using BierBuyFR.Web.ViewModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -67,8 +68,8 @@ namespace BierBuyFR.Web.Controllers
 
             if(CookiePanierProduits != null && !string.IsNullOrEmpty(CookiePanierProduits.Value))
             {
-                model.PanierProduitID = CookiePanierProduits.Value.Split('-').Select(x => int.Parse(x)).ToList();
-                model.PanierProduits = produitsService.GetProduits(model.PanierProduitID);
+                model.PanierProduitIDs = CookiePanierProduits.Value.Split('-').Select(x => int.Parse(x)).ToList();
+                model.PanierProduits = produitsService.GetProduits(model.PanierProduitIDs);
                 model.User = UserManager.FindById(User.Identity.GetUserId());
             }
 
