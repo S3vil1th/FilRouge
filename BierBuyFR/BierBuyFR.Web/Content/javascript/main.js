@@ -819,7 +819,7 @@
       countDown();
       flatCounter();
       googleMap();
-      //flatPrice();  
+      flatPrice();  
       flatFilterBox(); 
       flatShopSearch();
       topSearch();
@@ -832,7 +832,6 @@
       flatIsotope();
       flatCarouselOwl();
       flatContentBox();
-      updateCartProducts();
    	});
 })(jQuery);
 

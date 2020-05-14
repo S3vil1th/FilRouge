@@ -37,22 +37,22 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="Nom">Nom</label>
-                                <input type="text" class="form-control" id="Nom" placeholder="@Model.Acheteur.UserName" value="@Model.Acheteur.Nom" required="">
+                                <input type="text" class="form-control" id="Nom" placeholder="@Model.Acheteur.Nom" value="@Model.Acheteur.Nom" required="">
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                            <label for="Email">Email <span class="text-muted">(Optional)</span></label>
                             <input type="email" class="form-control" id="Email" placeholder="@Model.Acheteur.Email" value="@Model.Acheteur.Email">
                         </div>
 
                         <div class="mb-3">
-                            <label for="adresse">Adresse</label>
+                            <label for="Adresse">Adresse</label>
                             <input type="text" class="form-control" id="Adresse" placeholder="@Model.Acheteur.Adresse" required="" value="@Model.Acheteur.Adresse">
                         </div>
 
                         <div class="mb-3">
-                            <label for="adresse">Statut</label>
+                            <label for="statut">Statut</label>
                             <select name="Statut" id="changeStatut">
                                 @foreach (var statutDisponible in Model.StatutDisponible)
                                 {
