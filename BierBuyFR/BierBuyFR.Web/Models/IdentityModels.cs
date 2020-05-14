@@ -1,17 +1,21 @@
 ﻿using System.Data.Entity;
+using System.Dynamic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace BierBuyFR.Web.Models
 {
     // Vous pouvez ajouter des données de profil pour l'utilisateur en ajoutant d'autres propriétés à votre classe ApplicationUser. Pour en savoir plus, consultez https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
+        public int userId { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
 
+        public string Role { get; set; }
         public string Adresse { get; set; }
         public int NumRue { get; set; }
         public string NomRue { get; set; }

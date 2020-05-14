@@ -38,6 +38,10 @@ namespace BierBuyFR.Web
                 user.UserName = "Administrateur@BierBuyFR.Web";
                 user.Email = "Administrateur@BierBuyFR.Web";
                 string pwd = "PasswordAdministrateur";
+                user.Nom = "Admin";
+                user.Prenom = "Admin";
+                user.Ville = "Partout";
+
 
                 var newuser = userManager.Create(user, pwd);
                 if (newuser.Succeeded)

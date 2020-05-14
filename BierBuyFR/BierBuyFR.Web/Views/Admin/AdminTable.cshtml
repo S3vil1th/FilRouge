@@ -1,0 +1,132 @@
+﻿@using BierBuyFR.Web.Models
+@model IEnumerable<Users_in_Role_ViewModel>
+@{
+    ViewBag.Title = "AdminTable";
+}
+
+<div>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Recherche</label>
+                    <input class="form-control" id="searchTxt" name="Search" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-6">
+                    <button class="form-control" type="button" id="searchBtn">Rechercher</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="form-control" type="button" id="addBtn"> Nouveau </button>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td> Nom </td>
+                <td> Role </td>
+                <td> Ville </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Role</td>
+                <td>@user.Ville</td>
+                <td>
+                    <button class="" data-id="@user.UserId">Modifier</button>
+                    <button class="deleteBtn" data-id="@user.UserId">Supprimer</button>
+                </td>
+            </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>
+<script>
+    $("#searchBtn").click(function () {
+        var searchValue = $("#searchTxt").val();
+
+        $.ajax({
+
+            url: '/Admin/AdminTable',
+            data: {
+                search : searchValue
+            }
+        })
+            .done(function (response) {
+                $("#tableContainer").html(response);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+    $("#addBtn").click(function () {
+        $.ajax({
+
+            url: '/Account/Register',
+
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+
+    $(".editBtn").click(function () {
+        $.ajax({
+
+            url: '/Admin/AssignRole',
+            data: {
+                ID: $(this).attr('data-id')
+            }
+
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+
+    $(".deleteBtn").click(function () {
+
+        var confirmDelete = confirm("Etes vous sur de vouloir supprimer cet article?")
+
+        if (confirmDelete ) {
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/Delete',
+                data: {
+                    ID: $(this).attr('data-id')
+                }
+
+            })
+                .done(function (response) {
+                    $("#tableContainer").html(response);
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("ECHEC");
+                });
+        }
+
+    });
+</script>

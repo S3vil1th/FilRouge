@@ -58,18 +58,18 @@
     <Compile Include="Type_ProduitsServices.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BierBuyFR.Database\BierBuyFR.Database.csproj">
       <Project>{f19aa5a1-c256-4267-9997-4b404edc0089}</Project>
       <Name>BierBuyFR.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\BierBuyFR.Entitie\BierBuyFR.Entitie.csproj">
-      <Project>{1776BE7D-61E6-4797-90AC-11F6E7756B4D}</Project>
+      <Project>{1776be7d-61e6-4797-90ac-11f6e7756b4d}</Project>
       <Name>BierBuyFR.Entitie</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

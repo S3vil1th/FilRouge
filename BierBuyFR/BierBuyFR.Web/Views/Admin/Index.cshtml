@@ -1,13 +1,36 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<ul>
-    <li>@Html.ActionLink("Create User", "CreateUser", "Admin")</li>
-    <li>@Html.ActionLink("Assign Role", "AssignRole", "Admin")</li>
-    <li>@Html.ActionLink("Delete Role", "DeleteRole", "Admin")</li>
-</ul>
+
+<section class="flat-row flat-iconbox">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-section">
+                    <h2 class="title">
+                        Utilisateurs
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div id="tableContainer">
+            @{
+                Html.RenderAction("AdminTable");
+
+            }
+        </div>
+
+        <hr />
+
+        <div id="actionContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+

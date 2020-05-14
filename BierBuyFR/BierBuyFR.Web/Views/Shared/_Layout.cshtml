@@ -148,19 +148,25 @@
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Validation", "Shop")">Validation</a>
+                                    
                                     <ul class="submenu">
-                                        <li><a href="/Commande">Commandes client</a></li>
-                                    </ul>
-                                </li>
+                                        @if (User.IsInRole("Administrateur"))
+                                        {
+                                            <li><a href="/Commande">Commandes client</a></li>
+                                        }
+                                        </ul>
+                                    
+                                    </li>
                                 @if (User.IsInRole("Administrateur"))
                                 {
                                     <li>
                                         <a href="#">AdminBoard</a>
                                         <ul class="submenu">
+                                            <li><a href="@Url.Action("Index", "Admin")">Liste des utilisateurs</a></li>
                                             <li><a href="@Url.Action("CreateUser", "Admin")">Ajouter un utilisateur</a></li>
                                             <li><a href="@Url.Action("AssignRole", "Admin")">Modifier un role</a></li>
                                             <li><a href="@Url.Action("DeleteRole", "Admin")">Supprimer un role</a></li>
-                                          
+
                                         </ul>
                                     </li>
                                 }

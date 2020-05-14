@@ -14,6 +14,16 @@ namespace BierBuyFR.Web.Models
         public bool BrowserRemembered { get; set; }
     }
 
+   
+
+    public class Users_in_Role_ViewModel
+    {
+        public string UserId { get; set; }
+        public string Username { get; set; }
+        public string Ville { get; set; }
+        public string Role { get; set; }
+    }
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

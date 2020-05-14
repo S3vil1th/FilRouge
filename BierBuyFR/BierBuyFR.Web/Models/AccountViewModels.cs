@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BierBuyFR.Web.Models
@@ -10,6 +11,12 @@ namespace BierBuyFR.Web.Models
         public string Email { get; set; }
     }
 
+    public class CreateUserViewModels
+    {
+        public string Username { get; set; }
+        public string Ville { get; set; }
+        public string Roles { get; set; }
+    }
     public class ExternalLoginListViewModel
     {
         public string ReturnUrl { get; set; }
@@ -64,6 +71,10 @@ namespace BierBuyFR.Web.Models
 
     public class RegisterViewModel
     {
+        
+        [DataType(DataType.Text)]
+        [Display(Name = "userId")]
+        public int userId { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Nom")]
