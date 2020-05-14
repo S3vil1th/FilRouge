@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 
-    
+
 }
 <!-- SLIDER -->
 <div class="rev_slider_wrapper fullwidthbanner-container">
@@ -156,7 +156,7 @@
                      data-splitin="none"
                      data-splitout="none"
                      data-responsive_offset="on">
-                   JUSQU'A <span class="text-accent">30%</span> DE REDUCTION
+                    JUSQU'A <span class="text-accent">30%</span> DE REDUCTION
                 </div>
 
                 <div class="tp-caption text-right"
@@ -182,33 +182,31 @@
     </div>
 </div>
 <!-- END SLIDER -->
-<!-- IMAGE BOX -->
 <section class="flat-row row-image-box">
     <div class="container">
         <div class="row gutter-10">
-        @foreach (var type_produit in Model.Type_Produits)
-        {
-            <div class="col-sm-6 col-md-4">
-                <div class="flat-image-box style-1 data-effect div-h22 clearfix">
-                    <div class="item data-effect-item">
-                        <div class="inner">
-                            <div class="thumb">
-                                <img src="@type_produit.ImageURL" alt="Image">
-                                <div class="elm-btn">
-                                    <a href="#" class="themesflat-button bg-white width-150">@type_produit.Type</a>
+            @foreach (var type_produit in Model.Type_Produits)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="flat-image-box style-1 data-effect div-h22 clearfix">
+                        <div class="item data-effect-item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="@type_produit.ImageURL" alt="Image">
+                                    <div class="elm-btn">
+                                        <a href="#" class="themesflat-button bg-white width-150">@type_produit.Type</a>
+                                    </div>
+                                    <div class="overlay-effect bg-color-1"></div>
                                 </div>
-                                <div class="overlay-effect bg-color-1"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div><!-- /.col-md-4 -->
-        }
-            
+                </div><!-- /.col-md-4 -->
+            }
+
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section>
-<!-- END IMAGE BOX -->
 <!-- PRODUCT NEW -->
 <section class="flat-row row-product-new">
     <div class="container">
@@ -216,100 +214,12 @@
             <div class="col-md-12">
                 <div class="title-section margin-bottom-52">
                     <h2 class="title">
-                        Nouveaux Produits
+                        New Product
                     </h2>
                 </div>
-                <div class="product-content product-fourcolumn clearfix">
-                    <ul class="product style2 clearfix">
-                        <li class="product-item">
 
-                            <div class="product-thumb clearfix">
-                                <a href="#" class="product-thumb">
-                                    <img src="~/Content/imagesshop/sh-4/13.jpg" alt="image">
-                                </a>
-                                <span class="new">Nouveau</span>
-                            </div>
-                            <div class="product-info text-center clearfix">
-                                <span class="product-title">Delirium Argentum</span>
-                                <div class="price">
-                                    <ins>
-                                        <span class="amount">2€</span>
-                                    </ins>
-                                </div>
-                                
-                            </div>
-                            <div class="add-to-cart text-center">
-                                <a href="#">Ajouter au panier</a>
-                            </div>
-                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                        </li>
+                @{Html.RenderAction("Produits", "Widgets", new { DernierProduit = true });}
 
-                        <li class="product-item">
-                            <div class="product-thumb clearfix">
-                                <a href="#" class="product-thumb">
-                                    <img src="~/Content/imagesshop/sh-4/14.jpg" alt="image">
-                                </a>
-                                <span class="new">Nouveau</span>
-                            </div>
-                            <div class="product-info clearfix">
-                                <span class="product-title">Goudale Fumée</span>
-                                <div class="price">
-                                    <ins>
-                                        <span class="amount">5€</span>
-                                    </ins>
-                                </div>
-                              
-                            </div>
-                            <div class="add-to-cart text-center">
-                                <a href="#">Ajouter au panier</a>
-                            </div>
-                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                        </li>
-                        <li class="product-item">
-                            <div class="product-thumb clearfix">
-                                <a href="#" class="product-thumb">
-                                    <img src="~/Content/imagesshop/sh-4/15.jpg" alt="image">
-                                </a>
-                                <span class="new sale">Ventes Flash</span>
-                            </div>
-                            <div class="product-info clearfix">
-                                <span class="product-title">Paix Dieu</span>
-                                <div class="price">
-                                    <del>
-                                        <span class="regular">2€</span>
-                                    </del>
-                                    <ins>
-                                        <span class="amount">1,5€</span>
-                                    </ins>
-                                </div>
-                            </div>
-                            <div class="add-to-cart text-center">
-                                <a href="#">Ajouter au panier</a>
-                            </div>
-                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                        </li>
-                        <li class="product-item">
-                            <div class="product-thumb clearfix">
-                                <a href="#" class="product-thumb">
-                                    <img src="~/Content/imagesshop/sh-4/16.jpg" alt="image">
-                                </a>
-                            </div>
-                            <div class="product-info clearfix">
-                                <span class="product-title">Paix Dieu Grande</span>
-                                <div class="price">
-                                    <ins>
-                                        <span class="amount">7,52€</span>
-                                    </ins>
-                                </div>
-                               
-                            </div>
-                            <div class="add-to-cart text-center">
-                                <a href="#">Ajouter au panier</a>
-                            </div>
-                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div><!-- /.row -->
     </div><!-- /.container -->
@@ -341,44 +251,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="title-section margin-bottom-41">
-                    <h2 class="title">Meilleures ventes</h2>
+                    <h2 class="title">Best Sale</h2>
                 </div>
-                <ul class="flat-filter style-1 text-center max-width-682 clearfix">
-                    <li class="active"><a href="#" data-filter="*">Tout les produits</a></li>
-                    <li><a href="#" data-filter=".kid">Biere blonde</a></li>
-                    <li><a href="#" data-filter=".man">Biere brune</a></li>
-                    <li><a href="#" data-filter=".woman">Bieres d'abbaye</a></li>
-                    <li><a href="#" data-filter=".accessories">Whisky</a></li>
-                </ul>
-                <div class="divider h54"></div>
-                <div class="product-content product-fourcolumn clearfix">
-                    <ul class="product style2 isotope-product clearfix">
-                        @foreach (var produit in Model.Produits)
-                        {
-                        <li class="product-item kid woman">
-                            <div class="product-thumb clearfix">
-                                <a href="#">
-                                    @*<img src="@produit.ImageURL" alt="image">*@
-                                </a>
-                            </div>
-                            <div class="product-info clearfix">
-                                <span class="product-title">@produit.Nom</span>
-                                <div class="price">
-                                    <ins>
-                                        <span class="amount">@produit.Prix €</span>
-                                    </ins>
-                                </div>
 
-                            </div>
-                            <div class="add-to-cart text-center">
-                                <a href="#">Ajouter au panier</a>
-                            </div>
-                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                        </li>
-                        }
-                        
-                    </ul>
-                </div>
+                @{Html.RenderAction("Produits", "Widgets", new { DernierProduit = false });}
+
             </div>
         </div>
     </div>

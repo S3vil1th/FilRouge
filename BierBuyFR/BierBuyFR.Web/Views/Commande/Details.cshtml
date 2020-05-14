@@ -37,18 +37,18 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="Nom">Nom</label>
-                                <input type="text" class="form-control" id="Nom" placeholder="" value="@Model.Acheteur.Nom" required="">
+                                <input type="text" class="form-control" id="Nom" placeholder="@Model.Acheteur.UserName" value="@Model.Acheteur.Nom" required="">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                            <input type="email" class="form-control" id="Email" placeholder="you@example.com" value="@Model.Acheteur.Email">
+                            <input type="email" class="form-control" id="Email" placeholder="@Model.Acheteur.Email" value="@Model.Acheteur.Email">
                         </div>
 
                         <div class="mb-3">
                             <label for="adresse">Adresse</label>
-                            <input type="text" class="form-control" id="adresse" placeholder="1234 Main St" required="" value="@Model.Acheteur.Adresse">
+                            <input type="text" class="form-control" id="Adresse" placeholder="@Model.Acheteur.Adresse" required="" value="@Model.Acheteur.Adresse">
                         </div>
 
                         <div class="mb-3">
@@ -72,7 +72,7 @@
     <script>
 	$("#changeStatut").change(function () {
 		$.ajax({
-			url: '@Url.Action("ChangeStatut", "Commande")',
+			url: '@Url.Action("ChangementStatut", "Commande")',
 			data: {
 				statut: $("#changeStatut").val(),
 				ID: '@Model.Commande.ID'

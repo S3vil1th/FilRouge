@@ -52,43 +52,77 @@
                             <img src="~/Content/images/beer.jpg" alt="image" width="107" height="24" data-retina="images/beer.jpg" data-width="107" data-height="24">
                         </a>
                     </div><!-- /.logo -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="mt-3">
+                            <a class="icon_login pl-4 pr-4 mt-2" href="~/Views/Manage/ManageLogins.cshtml">
+                                @User.Identity.Name
+                            </a>
+                        </div>
+
+                    }
                     <div class="mobile-button"><span></span></div>
                     <ul class="menu-extra">
+                        @*Ajout des buttons connexion , s'inscrire, et déconnexion et en parallèle la modification du css associé.*@
+                        @if (!Request.IsAuthenticated)
+                        {
+                            <li class="box-register box-cart nav-top-cart-wrapper">
+                                <a class="icon_register nav-cart-trigger" href="~/Account/Register"></a>
+                                <div class="nav-shop-cart">
+                                    <div class="widget_shopping_cart_content">
+                                        <div class="woocommerce-min-cart-wrap">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="~/Account/Login">Register</a>
+                                                </li>
+                                            </ul>
+                                        </div><!-- /.widget_shopping_cart_content -->
+                                    </div>
+                                </div><!-- /.nav-shop-cart -->
+                            </li>
+                        }
+                        @*Modification methode login, redirection vers le controleur account/login*@
+                        @if (!Request.IsAuthenticated)
+                        {
+                            <li class="box-login box-cart nav-top-cart-wrapper">
+                                <a class="icon_login nav-cart-trigger" href="~/Account/Login"></a>
+                                <div class="nav-shop-cart">
+                                    <div class="widget_shopping_cart_content">
+                                        <div class="woocommerce-min-cart-wrap">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="#">Login</a>
+                                                </li>
+                                            </ul>
+                                        </div><!-- /.widget_shopping_cart_content -->
+                                    </div>
+                                </div><!-- /.nav-shop-cart -->
+                            </li>
+                        }
+                        @*ajout de d'une déco personalisé*@
+                        <li class="box-deco">
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                }
+
+                                <a class="icon_deco" href="javascript:document.getElementById('logoutForm').submit()"></a>
+                            }
+                        </li>
                         <li class="box-search">
                             <a class="icon_search header-search-icon" href="#"></a>
                             <form role="search" method="get" class="header-search-form" action="#">
                                 <input type="text" value="" name="s" class="header-search-field" placeholder="Rechercher...">
                                 <button type="submit" class="header-search-submit" title="Rechercher">Recherche</button>
                             </form>
-                        </li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="box-login">
-                                <a class="icon_login" href="#">
-                                    @User.Identity.Name
-                                </a>
-                            </li>
-                            
-                        }
+                        </li>            
 
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" href="@Url.Action("Validation", "Shop")"><span id="PaniersProduitsCompte">0</span></a>
                         </li>
 
-                        <li class="box-login box-cart nav-top-cart-wrapper">
-                            <a class="icon_login nav-cart-trigger active" href="#"></a>
-                            <div class="nav-shop-cart">
-                                <div class="widget_shopping_cart_content">
-                                    <div class="woocommerce-min-cart-wrap">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="/">Accueil</a>
-                                            </li>
-                                        </ul>
-                                    </div><!-- /.widget_shopping_cart_content -->
-                                </div>
-                            </div><!-- /.nav-shop-cart -->
-                        </li>
 
                     </ul><!-- /.menu-extra -->
                     <div class="nav-wrap">
@@ -102,9 +136,25 @@
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Validation", "Shop")">Validation</a>
+                                    <ul class="submenu">
+                                        <li><a href="Commande">Commandes client</a></li>
+                                    </ul>
                                 </li>
-                                
+                                @if (User.IsInRole("Administrateur"))
+                                {
+                                    <li>
+                                        <a href="#">AdminBoard</a>
+                                        <ul class="submenu">
+                                            <li><a href="@Url.Action("CreateUser", "Admin")">Ajouter un utilisateur</a></li>
+                                            <li><a href="@Url.Action("AssignRole", "Admin")">Modifier un role</a></li>
+                                            <li><a href="@Url.Action("DeleteRole", "Admin")">Supprimer un role</a></li>
+                                            <li><a href="Produit">Gérer les produits</a></li>
+                                            <li><a href="Type_Produit">Gérer les catégories</a></li>
+                                        </ul>
+                                    </li>
+                                }
                             </ul>
+
                         </nav><!-- /.mainnav -->
                     </div><!-- /.nav-wrap -->
                 </div><!-- /.container-fluid -->
@@ -247,5 +297,7 @@
     <script src="~/Content/rev-slider/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="~/Content/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="~/Content/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

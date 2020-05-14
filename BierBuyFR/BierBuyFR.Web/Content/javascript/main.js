@@ -819,7 +819,7 @@
       countDown();
       flatCounter();
       googleMap();
-      flatPrice();  
+      //flatPrice();  
       flatFilterBox(); 
       flatShopSearch();
       topSearch();
@@ -831,8 +831,8 @@
       flatEffectDir();
       flatIsotope();
       flatCarouselOwl();
-        flatContentBox();
-        updateCartProducts();
+      flatContentBox();
+      updateCartProducts();
    	});
 })(jQuery);
 
