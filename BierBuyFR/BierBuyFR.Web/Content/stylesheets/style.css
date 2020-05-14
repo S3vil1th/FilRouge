@@ -996,17 +996,27 @@ h6 { font-size: 14px; line-height: 48px; font-weight: 400;}
 
 .menu-extra .box-search .icon_search:before,
 .menu-extra .box-login .icon_login:before,
+.menu-extra .box-register .icon_register:before,
+.menu-extra .box-deco .icon_deco:before,
 .menu-extra .box-cart .icon_cart:before {
 	content: "";
 	font-family: "FontAwesome";
 }
 
 .menu-extra .box-search .icon_search:before {
-	content:  "\f002";
+	content: "\f002";
 }
 
 .menu-extra .box-login .icon_login:before {
-	content:  "\f007";
+	content: "\f007";
+}
+
+.menu-extra .box-register .icon_register:before {
+	content: "\f234";
+}
+
+.menu-extra .box-deco .icon_deco:before {
+	content: "\f08b";
 }
 
 .menu-extra .box-cart .icon_cart:before {

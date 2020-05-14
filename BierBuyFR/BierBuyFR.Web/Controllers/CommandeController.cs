@@ -13,6 +13,7 @@ namespace BierBuyFR.Web.Controllers
 {
     public class CommandeController : Controller
     {
+        //Instanciation des Services a utiliser dans le controleur
         CommandeService commandeService = new CommandeService();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -42,7 +43,7 @@ namespace BierBuyFR.Web.Controllers
 
         
             
-            // GET: Commande
+            // Controleur de la page INDEX de la commande, récupérant les ID des utilisateur et le statut de la commande pour l'affichage)
             public ActionResult Index(string userID, string statut)
             {
 
@@ -57,6 +58,7 @@ namespace BierBuyFR.Web.Controllers
                 return View(model);
             }
 
+        //Controleur de la page DETAILS de chaque commande, récupérant l'ID d'une commande au clique sur celle-ci
             public ActionResult Details(int ID)
             {
                 CommandeDetailsViewModels model = new CommandeDetailsViewModels();
@@ -71,6 +73,7 @@ namespace BierBuyFR.Web.Controllers
                 return View(model);
             }
 
+        //Controleur Json permettant la validation du changement de statut d'une commande par un Admin
             public JsonResult ChangementStatut(string statut, int ID)
             {
                 JsonResult result = new JsonResult();

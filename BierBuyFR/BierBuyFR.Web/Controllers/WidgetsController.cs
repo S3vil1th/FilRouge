@@ -10,7 +10,7 @@ namespace BierBuyFR.Web.Controllers
 {
     public class WidgetsController : Controller
     {
-        // GET: Widgets
+        //TEST: Widget permettant un tri et retour des derniers produits enregistrés
         public ActionResult Produits(bool dernierProduit, int? type_produitID = 0)
         {
             ProduitServices produitServices = new ProduitServices();

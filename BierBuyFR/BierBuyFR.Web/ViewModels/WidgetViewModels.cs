@@ -6,6 +6,7 @@ using System.Web;
 
 namespace BierBuyFR.Web.ViewModel
 {
+    //Modèle d'affichage du Widget de selection du dernier produit ajouté
     public class ProduitsWidgetViewModels
     {
         public List<Produit> Produits { get; set; }

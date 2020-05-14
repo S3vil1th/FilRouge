@@ -10,8 +10,12 @@ namespace BierBuyFR.Web.Controllers
 {
     public class HomeController : Controller
     {
+        //Instanciation des services a utiliser dans le controleur HOME
+
         Type_ProduitsServices type_produitsServices = new Type_ProduitsServices();
         ProduitServices produitServices = new ProduitServices();
+
+        //Controleur de l'INDEX de la page HOME, utilisant le modéle de la vue HOME pour y intégrer les produits et catégories
         public ActionResult Index()
         {
             HomeViewModel model = new HomeViewModel();
@@ -21,14 +25,14 @@ namespace BierBuyFR.Web.Controllers
 
             return View(model);
         }
-
+        //About par défaut
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A propos de l'application";
 
             return View();
         }
-
+        //Controleur d'affichage de la page Contact liée au Home
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

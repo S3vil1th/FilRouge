@@ -11,7 +11,7 @@ namespace BierBuyFR.Web.Controllers
 {
     public class SharedController : Controller
     {
-        // GET: Shared
+        // Controleur Json permettrant l'upload d'image dans le dossier image du projet
         public JsonResult UploadImage()
         {
             JsonResult result = new JsonResult();
@@ -19,26 +19,18 @@ namespace BierBuyFR.Web.Controllers
 
             try
             {
+                //récupération du fichier
                 var file = Request.Files[0];
-
+                //Formatage du Nom pour l'upload
                 var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-
+                //Création du CHEMIN d'ENREGISTREMENT pour la BDD
                 var path = Path.Combine(Server.MapPath("~/content/images/"), fileName);
 
                 file.SaveAs(path);
 
                 result.Data = new { Success = true,  ImageURL = string.Format("/content/images/{0}", fileName) };
 
-                //var newImage = new Image() { Nom = fileName };
-
-                //if (ImagesService.Instance.SaveNewImage(newImage))
-                //{
-                //    result.Data = new { Success = true, Image = fileName, File = newImage.PropertyIdList, ImageURL = string.Format("{0}{1}", IRuntimeVariables.ImageFolderPath, fileName) };
-                //}
-                //else
-                //{
-                //    result.Data = new { success = false, Message = new HttpStatusCodeResult(500) };
-                //}
+               
             }
             catch (Exception ex)
             {

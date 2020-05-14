@@ -11,14 +11,15 @@ namespace BierBuyFR.Web.Controllers
 {
     public class Type_ProduitController : Controller
     {
+        //Instanciation des services a utiliser
         Type_ProduitsServices type_produitService = new Type_ProduitsServices();
-        // GET: Type_Produit
+        //Controleur d'affichage de l'INDEX des catégories
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-
+        //Controleur d'affichage de la table des catégories, les regroupants toutes pour un affichage dynamique
         public ActionResult CategoryTable(string search)
         {
             Type_ProduitSearchViewModel model = new Type_ProduitSearchViewModel();
@@ -29,12 +30,15 @@ namespace BierBuyFR.Web.Controllers
             
             return PartialView("CategoryTable",model);
         }
+        //Controleur d'affichage de la CREATION d'une catégorie, partie DEMANDE des informations
         [HttpGet]
         public ActionResult Create()
         {
             NewType_ProduitViewModel model = new NewType_ProduitViewModel();
             return PartialView(model);
         }
+
+        //Controleur d'ENVOI des informations saisies dans la CREATION d'une catégorie
         [HttpPost]
         public ActionResult Create(NewType_ProduitViewModel model)
         {
@@ -49,7 +53,7 @@ namespace BierBuyFR.Web.Controllers
 
             return RedirectToAction("CategoryTable");
         }
-
+        //Controleur d'affichage de la MODIFICATION d'une catégorie, partie DEMANDE des informations
         [HttpGet]
         public ActionResult Edit(int ID)
         {
@@ -62,6 +66,7 @@ namespace BierBuyFR.Web.Controllers
             
             return PartialView(model);
         }
+        //Controleur d'ENVOI des informations saisies dans la MODIFICATION d'une catégorie
         [HttpPost]
         public ActionResult Edit(EditType_ProduitViewModel model)
         {
@@ -77,7 +82,7 @@ namespace BierBuyFR.Web.Controllers
         }
 
 
-        
+        //Controleur de suppression d'une catégorie
         [HttpPost]
         public ActionResult Delete(int ID)
         {

@@ -1,0 +1,52 @@
+﻿@model ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+
+<form id="sendMail">
+    <div class="form-group">
+        <label>Produit a signaler</label>
+        <select class="form-control" name="ProduitID">
+            @foreach (var produit in Model.Produits)
+            {
+                <option value="@produit.ProduitID">@produit.Nom</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Commentaire</label>
+        <input class="form-control" name="Commentaire" />
+
+    </div>
+    
+    <div class="form-group">
+        <label>Mail de contact</label>
+        <input class="form-control" name="Mail" />
+    </div>
+
+    <button id="SendBtn" type="button" class="btn btn-primary">Envoyer</button>
+</form>
+
+<script>
+    $("#SendBtn").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SendMail", "Contact")',
+            data:
+            
+                $("#sendMail").serialize()
+            
+        })
+            .done(function (response) {
+               swal("Félicitation", "Votre commande a été passée", "success").then((value) => {
+        			window.location = '@Url.Action("Index","Home")';
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("ECHEC");
+            });
+    });
+</script>

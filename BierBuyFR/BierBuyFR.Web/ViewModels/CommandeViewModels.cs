@@ -7,13 +7,14 @@ using System.Web;
 
 namespace BierBuyFR.Web.ViewModels
 {
+    //Modèle d'affichage des commandes
     public class CommandeViewModels
     {
         public List<Commande> Commandes { get; set; }
         public string Statut { get; set; }
         public string UserID { get; set; }
     }
-
+    //Modèle d'affichage des Details d'une commande
     public class CommandeDetailsViewModels
     {
         public List<string> StatutDisponible { get; set; }

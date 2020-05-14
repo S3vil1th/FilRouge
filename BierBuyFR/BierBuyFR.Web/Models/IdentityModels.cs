@@ -10,7 +10,14 @@ namespace BierBuyFR.Web.Models
     public class ApplicationUser : IdentityUser
     {
         public string Nom { get; set; }
+        public string Prenom { get; set; }
+
         public string Adresse { get; set; }
+        public int NumRue { get; set; }
+        public string NomRue { get; set; }
+        public int TelPort { get; set; }
+        public string Ville { get; set; }
+        public int Cp { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Notez qu'authenticationType doit correspondre à l'élément défini dans CookieAuthenticationOptions.AuthenticationType

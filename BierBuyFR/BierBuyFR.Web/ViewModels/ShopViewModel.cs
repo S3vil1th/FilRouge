@@ -7,15 +7,14 @@ using System.Web;
 
 namespace BierBuyFR.Web.ViewModel
 {
-    
+    //Modèle d'affichage de Validation d'un panier
         public class ValiderViewModel
         {
             public List <Produit> PanierProduits { get; set; }
             public List<int> PanierProduitIDs { get; set; }
-
             public ApplicationUser User { get; set; }
         }
-
+    //Modèle d'affichage du MAGASIN
         public class ShopViewModels
         {
            
@@ -25,7 +24,7 @@ namespace BierBuyFR.Web.ViewModel
             public int? Type_ProduitID { get; set; }
             public string Search { get; set; }
         }
-
+    //Modèle d'affichage des produits avec Filtrage
         public class FiltreProduitsViewModel
         {
             public List<Produit> Produits { get; set; }

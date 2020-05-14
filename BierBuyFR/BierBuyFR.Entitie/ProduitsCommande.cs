@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BierBuyFR.Entitie
 {
+    //création d'une table de liaison entre produit et commande
     public class ProduitsCommande
     {
         public int ID { get; set; }

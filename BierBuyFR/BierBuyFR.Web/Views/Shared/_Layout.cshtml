@@ -117,7 +117,7 @@
                                 <input type="text" value="" name="s" class="header-search-field" placeholder="Rechercher...">
                                 <button type="submit" class="header-search-submit" title="Rechercher">Recherche</button>
                             </form>
-                        </li>            
+                        </li>
 
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" href="@Url.Action("Validation", "Shop")"><span id="PaniersProduitsCompte">0</span></a>
@@ -130,14 +130,26 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Index", "Home")">Accueil</a>
+                                    <ul class="submenu">
+                                        <li><a href="Home">Home</a></li>
+                                        <li><a href="Home">A propos</a></li>
+                                        <li><a href="Contact">Contact</a></li>
+
+                                        @if ((User.IsInRole("Administrateur")) || (User.IsInRole("Editeur")))
+                                        {
+                                            <li><a href="Produit">Gestion produits</a></li>
+                                            <li><a href="Type_Produit">Gestion catégories</a></li>
+                                        }
+                                    </ul>
                                 </li>
+
                                 <li>
                                     <a href="@Url.Action("Index", "Shop")">Magasin</a>
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Validation", "Shop")">Validation</a>
                                     <ul class="submenu">
-                                        <li><a href="Commande">Commandes client</a></li>
+                                        <li><a href="/Commande">Commandes client</a></li>
                                     </ul>
                                 </li>
                                 @if (User.IsInRole("Administrateur"))
@@ -148,8 +160,7 @@
                                             <li><a href="@Url.Action("CreateUser", "Admin")">Ajouter un utilisateur</a></li>
                                             <li><a href="@Url.Action("AssignRole", "Admin")">Modifier un role</a></li>
                                             <li><a href="@Url.Action("DeleteRole", "Admin")">Supprimer un role</a></li>
-                                            <li><a href="Produit">Gérer les produits</a></li>
-                                            <li><a href="Type_Produit">Gérer les catégories</a></li>
+                                          
                                         </ul>
                                     </li>
                                 }
@@ -204,7 +215,7 @@
                                 <li><a href="#">About Us</a></li>
                                 <li><a href="#">Online Store</a></li>
                                 <li><a href="blog-list.html">Blog</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
                             </ul>
                         </div><!-- /.widget -->
                     </div><!-- /.col-md-3 -->
@@ -298,6 +309,6 @@
     <script src="~/Content/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="~/Content/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

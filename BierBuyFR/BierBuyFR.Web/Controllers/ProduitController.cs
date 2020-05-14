@@ -12,13 +12,15 @@ namespace BierBuyFR.Web.Controllers
 {
     public class ProduitController : Controller
     {
+        //Instanciation des services a utiliser
         ProduitServices produitsService = new ProduitServices();
-        // GET: Produit
+        // Controleur d'affichage de l'INDEX de la page produit
         public ActionResult Index()
         {
             return View();
         }
 
+        //Controleur de liaison a la Vue PRODUITTABLE, avec en paramétre une string de recherche pour une retour des produits voulus
         public ActionResult ProduitTable(string search)
         {
 
@@ -31,6 +33,7 @@ namespace BierBuyFR.Web.Controllers
             return PartialView(produits);
         }
 
+        //Controleur de la page de CREATION d'un produit, au niveau du RETOUR d'une vue a sa demande
         [HttpGet]
         public ActionResult Create()
         {
@@ -40,23 +43,25 @@ namespace BierBuyFR.Web.Controllers
 
             return PartialView(model);
         }
-
+        //Controleur de la page de CREATION d'un produit, au niveau de l'ENVOI desinformations entrées dans sa vue
         [HttpPost]
         public ActionResult Create(NewProduitsViewModels model)
         {
             Type_ProduitsServices type_ProduitService = new Type_ProduitsServices();
 
+            //Enregistrement des paramétres du nouveau produit
+
             var newProduit = new Produit();
             newProduit.Nom = model.Nom;
             newProduit.Description = model.Description;
             newProduit.Prix = model.Prix;
-            //newProduit.Type_ProduitID = model.Type_ProduitID;
+            
             newProduit.Type_Produit = type_ProduitService.GetType_Produit(model.Type_ProduitID);
 
             produitsService.SaveProduit(newProduit);
             return RedirectToAction("ProduitTable");
         }
-
+        //Controleur de la page de MODIFICATION d'un produit, au niveau de l'ENVOI des informations entrées dans sa vue
         [HttpPost]
         public ActionResult Edit(EditProduitViewModel model)
         {
@@ -77,7 +82,7 @@ namespace BierBuyFR.Web.Controllers
 
             return RedirectToAction("ProduitTable");
         }
-
+        //Controleur de la page de CREATION d'un produit, au niveau du RETOUR d'une vue a sa demande
         [HttpGet]
         public ActionResult Edit(int ID)
         {
@@ -97,7 +102,7 @@ namespace BierBuyFR.Web.Controllers
             model.type_produit = type_ProduitService.GetType_Produits();
             return PartialView(model);
         }
-
+        //Controleur de la page de SUPPRESSION d'un produit, au niveau de l'ENVOI des informations entrées dans sa vue (Validation de la suppression)
         [HttpPost]
         public ActionResult Delete(int ID)
         {

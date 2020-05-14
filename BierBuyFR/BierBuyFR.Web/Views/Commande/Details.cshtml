@@ -1,5 +1,5 @@
-﻿
-@model BierBuyFR.Web.ViewModels.CommandeDetailsViewModels
+﻿@using BierBuyFR.Web.ViewModels
+@model CommandeDetailsViewModels
 
 @if (Model != null && Model.Commande != null)
 {
@@ -68,7 +68,7 @@
             </div>
         </div><!-- /.container -->
     </section>
-
+    <!-- Mise en place du script Ajax pour paramétrer les boutons de changement de statut-->
     <script>
 	$("#changeStatut").change(function () {
 		$.ajax({

@@ -10,6 +10,7 @@ namespace BierBuyFR.Services
 {
     public class ShopServices
     {
+        //Methode de sauvegarde commande
         public int SaveCommande(Commande commande)
         {
             using (var context = new BBFRContext())

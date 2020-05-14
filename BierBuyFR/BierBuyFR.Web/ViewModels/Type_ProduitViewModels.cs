@@ -6,6 +6,7 @@ using System.Web;
 
 namespace BierBuyFR.Web.ViewModel
 {
+    //Modèle d'affichage des catégories selon une recherche
     public class Type_ProduitSearchViewModel
     {
         public List<Type_Produit> Type_Produits { get; set; }
@@ -13,6 +14,7 @@ namespace BierBuyFR.Web.ViewModel
 
         
     }
+    //Modèle d'affichage de la CREATION d'une catégorie
     public class NewType_ProduitViewModel
     {
         public string Type { get; set; }
@@ -21,7 +23,7 @@ namespace BierBuyFR.Web.ViewModel
         public string ImageURL { get; set; }
        
     }
-
+    // Modele d'affichage de la MODIFICATION d'une catégorie
     public class EditType_ProduitViewModel
     {
         public int ID { get; set; }

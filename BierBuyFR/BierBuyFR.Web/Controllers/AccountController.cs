@@ -12,6 +12,7 @@ using BierBuyFR.Web.Models;
 
 namespace BierBuyFR.Web.Controllers
 {
+    //Mise en place de Identity et des fonctions de reconnaissance des Users
     [Authorize]
     public class AccountController : Controller
     {
@@ -151,7 +152,7 @@ namespace BierBuyFR.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Nom = model.Nom, Prenom = model.Prenom, NumRue = model.NumRue, NomRue = model.NomRue, TelPort = model.TelPort, Cp = model.Cp, Ville = model.Ville, Adresse = model.NumRue.ToString()+" "+model.NomRue+" "+model.Cp+" "+model.Ville };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
