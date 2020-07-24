@@ -132,7 +132,7 @@
                                     <a href="@Url.Action("Index", "Home")">Accueil</a>
                                     <ul class="submenu">
                                         <li><a href="Home">Home</a></li>
-                                        <li><a href="Home">A propos</a></li>
+                                        <li><a href="@Url.Action("About", "Home")">A propos</a></li>
                                         <li><a href="Contact">Contact</a></li>
 
                                         @if ((User.IsInRole("Administrateur")) || (User.IsInRole("Editeur")))
@@ -147,16 +147,17 @@
                                     <a href="@Url.Action("Index", "Shop")">Magasin</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Validation", "Shop")">Validation</a>
-                                    
-                                    <ul class="submenu">
-                                        @if (User.IsInRole("Administrateur"))
-                                        {
+                                    @if ((User.IsInRole("Administrateur")) || (User.IsInRole("Manager")))
+                                    {
+                                        <a href="@Url.Action("Validation", "Shop")">Validation</a>
+
+                                        <ul class="submenu">
+
                                             <li><a href="/Commande">Commandes client</a></li>
-                                        }
+
                                         </ul>
-                                    
-                                    </li>
+                                    }
+                                </li>
                                 @if (User.IsInRole("Administrateur"))
                                 {
                                     <li>
@@ -195,7 +196,7 @@
                                         <input type="email" name="subscribe-email" placeholder="Your Email">
                                     </div>
                                     <div class="button">
-                                        <button type="button">SUBCRIBE</button>
+                                        <button type="button">SOUSCRIRE</button>
                                     </div>
                                 </div>
                             </form>
@@ -218,20 +219,20 @@
                     <div class="col-md-3">
                         <div class="widget widget-link">
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Online Store</a></li>
+                                <li><a href="#">A propos</a></li>
+                                <li><a href="#">Magasin</a></li>
                                 <li><a href="blog-list.html">Blog</a></li>
-                                <li><a href=@Url.Action("Contact", "Home")>Contact Us</a></li>
+                                <li><a href=@Url.Action("Contact", "Home")>Contactez nous</a></li>
                             </ul>
                         </div><!-- /.widget -->
                     </div><!-- /.col-md-3 -->
                     <div class="col-md-3">
                         <div class="widget widget-link link-login">
                             <ul>
-                                <li><a href="#">Login/ Register</a></li>
-                                <li><a href="#">Your Cart</a></li>
-                                <li><a href="#">Wishlist items</a></li>
-                                <li><a href="#">Your checkout</a></li>
+                                <li><a href="#">Inscription/Connexion</a></li>
+                                <li><a href="#">Votre panier</a></li>
+                                <li><a href="#">Liste de souhaits</a></li>
+                                <li><a href="#">Votre commande</a></li>
                             </ul>
                         </div><!-- /.widget -->
                     </div><!-- /.col-md-3 -->
@@ -239,9 +240,9 @@
                         <div class="widget widget-link link-faq">
                             <ul>
                                 <li><a href="faqs.html">FAQs</a></li>
-                                <li><a href="#">Term of service</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Régles du service</a></li>
+                                <li><a href="#">Paramètres de confidentialité</a></li>
+                                <li><a href="#">Retours</a></li>
                             </ul>
                         </div><!-- /.widget -->
                     </div><!-- /.col-md-3 -->
@@ -265,7 +266,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="copyright text-center">Copyright 2018 <a href="#"></a></p>
+                        <p class="copyright text-center">Copyright 2020 <a href="#"></a></p>
                     </div>
                 </div>
             </div>

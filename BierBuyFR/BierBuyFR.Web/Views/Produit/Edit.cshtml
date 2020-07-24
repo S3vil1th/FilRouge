@@ -6,37 +6,40 @@
 }
 
 
-<h2>Modifier le produit</h2>
+<h2>Modifier les produits</h2>
 
 <form id="editProduit">
-    <input name="ID" value="@Model.ID" type="hidden" />
+    <input type="hidden" name="ID" value="@Model.ID" />
 
-    <div class="form-group">
-        <label>Categorie</label>
-        <select class="form-control" name="Type_ProduitID">
-            @foreach (var category in Model.type_produit)
-            {
-                var selected = category.Type_ProduitID == Model.Type_ProduitID ? "selected" : string.Empty;
-                <option value="@category.Type_ProduitID" @selected>@category.Type</option>
-            }
-        </select>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>Categorie</label>
+                <select class="form-control" name="Type_ProduitID">
+                    @foreach (var category in Model.type_produit)
+                    {
+                        var selected = category.Type_ProduitID == Model.Type_ProduitID ? "selected" : string.Empty;
+                        <option value="@category.Type_ProduitID" @selected>@category.Type</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nom</label>
+                <input class="form-control" name="Nom" value="@Model.Nom" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" value="@Model.Description" />
+            </div>
+            <div class="form-group">
+                <label>Prix</label>
+                <input class="form-control" name="Prix" value="@Model.Prix" />
+            </div>
+        </div>
     </div>
-    <label>Nom</label>
-    <input name="Nom" value="@Model.Nom" />
 
-    <br />
-
-    <label>Description</label>
-    <input name="Description" value="@Model.Description" />
-
-    <br />
-
-    <label>Prix</label>
-    <input name="Prix" value="@Model.Prix" />
-
-    <br />
-
-    <button id="updateBtn" type="button">Enregistrer</button>
+    <button id="updateBtn" type="button" class="btn btn-primary">Update</button>
+    <button id="cancelBtn" type="button" class="btn btn-primary">Cancel</button>
 </form>
 
 <script>
@@ -45,7 +48,6 @@
             type: 'POST',
             url: '/Produit/Edit',
             data: $("#editProduit").serialize()
-
         })
             .done(function (response) {
                 $("#tableContainer").html(response);
@@ -56,4 +58,3 @@
             });
     });
 </script>
-
